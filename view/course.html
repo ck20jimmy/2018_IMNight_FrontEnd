@@ -23,26 +23,23 @@
 
         <div class="main">
             <div class="row">
-                <div class="space" v-for="e in classes">
-                    <!--front-->
-                    <div class="card" v-bind="{id: 'card'+e.id}" v-on:click="move(e.id)">
-                        <div class = "cit hvr-curl-top-right" :style="{ 'background-image' : 'url(\'' + e.img + '\')' }">
-                        <!-- <div class="lazy cit hvr-curl-top-right" :data-src="e.img" v-on:click = "showCourse(e.label,e.id)"> -->
-                        </div>
-                    </div>
-                    <div class="cb" :id="'cb'+e.id">
+                <!--<div class="space" v-for="e in classes">-->
+				<div class="test" v-for="e in classes">
+					<div class="card hvr-curl-top-right" :id = "'card'+e.id" v-on:click = "showCourse(e.label,e.id)" :style = "{ 'background-image' : 'url(\'' + e.img + '\')' }">
+						<!--<img class="card-img" :src="e.img" v-on:click="move(e.id)">-->
+					</div>
+					
+					<div class="cb" :id="'cb'+e.id">
                         <h4 class="card-title"><b>{{e.name}}</b></h4>
-                        <h6 class="card-subtitle mb-2"><span><img class="lazy" data-src = "../img/manager.png"></span>{{e.teacher}}</h6>
+                        <h6 class="card-subtitle"><span><img class="lazy" data-src = "../img/manager.png"></span>{{e.teacher}}</h6>
                     </div>
-
-                    <!--back-->
+					<!--back-->
                     <div class="box transform" v-bind="{id: 'back'+e.id}">
-                    <!--    <img class = "lazy moreBtn" data-toggle="modal" :data-target="'#exampleModal'+e.id" data-src = "../img/play-button.png">
-                    -->    
 						<h5 :id = "'des'+e.id">here</h5>
 						<img class = "moreBtn" data-toggle="modal" :data-target="'#exampleModal'+e.id" src = "../img/play-button.png">
                     </div>
-                </div>
+				</div>
+					
 				<center>
 					<button v-if = "courseMorethanFour" type="button" class="btn btn-outline-danger" onclick = "showMoreCourse()">更多課程</button>
 				</center>

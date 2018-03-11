@@ -62,9 +62,11 @@ var resource = new Vue({
 					withCredentials: true
 				},
 				success: function(data) {
-					console.log(data,id);
-					$('#des'+id).html(data[0].more);
-					$('#content'+id).html(data[0].content);
+					//console.log(data,id);
+					document.getElementById("des"+id).innerHTML = String(data[0].more);
+					document.getElementById("content"+id).innerHTML = String(data[0].content);
+					//$('#des'+id).html(data[0].more);
+					//$('#content'+id).html(data[0].content);
 					document.getElementById("task"+id).innerHTML = String(data[0].task);
 					//console.log(document.getElementById("task"+id).innerHTML);
 				},
@@ -72,21 +74,13 @@ var resource = new Vue({
 					alert("fail showCourse" + data);
 				}
 			});
+			
+			this.move(id);
 		},
 		
     }
 });
 
-// $(function(){
-// 	$('.lazy').Lazy({
-// 		effect: 'fadeIn',
-// 		effectTime: 1000,
-// 		threshold: 0,
-//         onError: function(element) {
-//             console.log('error loading ' + element.data('src'));
-//         }
-// 	});	
-// })
 
 $(function() {
     $.ajax({
@@ -97,9 +91,9 @@ $(function() {
         },
         success: function(data) {
             console.log(data);
-			if(data.length > 4){
+			if(data.length > 6){
 				resource.courseMorethanFour = true;
-				for (var i = 0; i < 4; i++) {
+				for (var i = 0; i < 6; i++) {
 					resource.classes.push(data[i]);
 				}
 			}else{
@@ -132,7 +126,7 @@ function showMoreCourse(){
             withCredentials: true
         },
         success: function(data) {
-			for (var i = 4; i < data.length; i++) {
+			for (var i = 6; i < data.length; i++) {
 				resource.classes.push(data[i]);
 			}
         },

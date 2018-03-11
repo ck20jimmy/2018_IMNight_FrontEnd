@@ -1,37 +1,44 @@
 /*mobile*/
 @media screen and (max-width:600px) {
-	.row{
-		display:inline;
-		width:100%;
-		text-align:center;
-		justify-content: center;
+	.cb{
+		width:40%;
 	}
-	
+	.moveRight{
+		transform:translateX(120%) translateY(-20px);
+	}
 	.card{
 		margin-left:auto;
 		margin-right:auto;
 	}
-	
-	/*.box{
-		margin-left:5px;
-	}*/
-	
-	.cb{
-		position:relative;
-		left:10px;
+}
+/*ipad*/
+@media screen and (min-width:600px) and (max-width:1000px){
+	.card{
+		margin-left:10px;
 	}
 	.moveRight{
-		transform:translateX(60%) translateY(-20px);
+		transform:translateX(100%) translateY(-20px);
+	}
+	.cb{
+		width:40%;
+	}
+	.test{
+		margin-right:20px;
 	}
 }
-
 /*laptop*/
-@media screen and (min-width:600px){
+@media screen and (min-width:1000px){
 	.card{
-		margin:10px;
+		margin-left:10px;
 	}
 	.moveRight{
 		transform:translateX(60%) translateY(-20px);
+	}
+	.cb{
+		width:60%;
+	}
+	.test{
+		margin-right:20px;
 	}
 }
 
@@ -49,20 +56,17 @@
 }
 
 .card{
-	margin-bottom:15px;
-	width:300px;
+	border-radius:3%;
 	transition:all 1s;
 	z-index:1;
+	height:300px;
+	width:300px;
+	background-position:center center;
 	border:transparent;
 }
 
-.cit{
-	background-color:transparent;
-	border-top-left-radius:3%;
-	border-top-right-radius:3%;
-	background-size:cover;
-	background-position:center center;
-	height:280px !important;
+.test{
+	height:330px;
 }
 
 /* Curl Top Right */
@@ -99,9 +103,8 @@
 .cb{
 	clip-path: polygon(100% 0%, 82% 50%, 100% 100%, 0 100%, 0 49%, 0 0);
 	position:relative;
-	top:-90px;
+	bottom:20%;
 	background-color: #c4e1ff;
-	width: 60%;
 	padding:5px;
 	text-align:left;
 	z-index:2;
@@ -121,18 +124,14 @@
 	height: 0px;
 	width: 0px;
 	position:relative;
-	top:-150px;
+	top:-130px;
 	left:10px;
 	padding:10px;
 	display:flex;
 }
 
 .box h5,.moreBtn{
-	 align-self:flex-end;
-}
-
-.space{
-	max-height:300px;
+	align-self:flex-end;
 }
 
 .transform {
@@ -146,7 +145,7 @@
 .transform-active {
   background-color: rgba(255,181,181,0.9);
   height:80px;
-  width: 250px;
+  width: 70%;
   z-index:0;
 }
   
@@ -155,11 +154,9 @@
 }
 
 .row{
-	padding-left:2%;
-	padding-top:2%;
-	width:100%;
-	overflow:hidden;
-	justify-content: center;
+	margin-left:auto;
+	margin-right:auto;
+	justify-content:center;
 }
 
 .modal-content{

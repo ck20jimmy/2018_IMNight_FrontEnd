@@ -25,54 +25,50 @@
         </div>
 
         <!-- story in each card-->
-        <div class="story">
-            <div class="row">
-                <div class="cardInRow" v-for="e in stories">
-                    <!-- <div class = "card box-shadow" data-toggle="modal" :data-target="'#modal'+e.num" :style="{ backgroundImage: 'url(' + e.imgUrl + ')' }"> -->
-                    <div class="card box-shadow hvr-bob" data-toggle="modal" :data-target="'#modal'+e.id" @click = "showStory(e.label,e.id)">
-                        <!-- <div class="cit lazy" :data-src="e.img" ></div> -->
-                        <div class="cit" :style = "{ 'background-image' : 'url(\'' + e.img + '\')' }"></div>
-                    </div>
+		<div class="row">
+			<div class="test" v-for="e in stories">
+				<div class="card box-shadow hvr-bob" data-toggle="modal" :data-target="'#modal'+e.id" @click = "showStory(e.label,e.id)" :style = "{ 'background-image' : 'url(\'' + e.img + '\')' }">
+					<!--<img class="card-img" :src ="e.img">-->
+				</div>
 
-                    <div class="triangle">
-                    </div>
-                    <div class="tag">
-                        <h4 class="card-title"><b>{{e.title}}</b></h4>
-						<h6 :id = "'detail'+e.id"><h6>
-                    </div>
-                </div>
-				
-				<center>
-					<button v-if = "storyMorethanFour" type="button" class="btn btn-outline-danger" onclick = "showMoreStory()">更多故事</button>
-				</center>
-            </div>
+				<div class="triangle">
+				</div>
+				<div class="tag">
+					<h4 class="card-title"><b>{{e.title}}</b></h4>
+					<h6 :id = "'detail'+e.id"><h6>
+				</div>
+			</div>
+			
+			<center>
+				<button v-if = "storyMorethanFour" type="button" class="btn btn-outline-danger" onclick = "showMoreStory()">更多故事</button>
+			</center>
+		</div>
 
-            <!-- modal -->
-            <div v-for="e in stories">
-                <div class="modal fade" :id="'modal'+e.id" tabindex="-1" role="dialog">
-                    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">{{e.title}}</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-                            </div>
-                            <div class="modal-body">
-                                <p :id ="'content'+e.id">content</p>
-                                <center v-on:click="crack(e.id)">
-                                    <img v-bind="{id: 'egg'+e.id}" class="egg" src="../img/egg.png">
-                                </center>
-                                <center>
-                                    <img v-bind="{id: 'eggDown'+e.id}" class="eggdown hide" src="../img/egg_down.png">
-                                    <img v-bind="{id: 'eggUp'+e.id}" class="eggup hide" src="../img/egg_up.png">
-                                </center>
-								<template :id = "'task'+e.id">store task label</template>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+		<!-- modal -->
+		<div v-for="e in stories">
+			<div class="modal fade" :id="'modal'+e.id" tabindex="-1" role="dialog">
+				<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">{{e.title}}</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+						</div>
+						<div class="modal-body">
+							<p :id ="'content'+e.id">content</p>
+							<center v-on:click="crack(e.id)">
+								<img v-bind="{id: 'egg'+e.id}" class="egg" src="../img/egg.png">
+							</center>
+							<center>
+								<img v-bind="{id: 'eggDown'+e.id}" class="eggdown hide" src="../img/egg_down.png">
+								<img v-bind="{id: 'eggUp'+e.id}" class="eggup hide" src="../img/egg_up.png">
+							</center>
+							<template :id = "'task'+e.id">store task label</template>
+						</div>
+					</div>
+				</div>
+			</div>
         </div>
     </div>
 

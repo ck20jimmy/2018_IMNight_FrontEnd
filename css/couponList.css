@@ -95,8 +95,20 @@
 	
 }
 
+/* ipad */
+@media screen and (min-width:600px) and (max-width:1000px){
+	.cardInRow{
+		margin-right:10px;
+	}
+	
+}
+
 /*laptop*/
 @media screen and (min-width:600px){
+	.cardInRow{
+		margin-right:10px;
+	}
+	
 	.card{
 		margin:10px;
 		margin-bottom:10px !important;
@@ -206,8 +218,10 @@
 	justify-content: center;
 	transition:all 1s;
 }
+
 .cardInRow{
 	max-height:320px;
+	margin-bottom:15px;
 }
 
 .card{
