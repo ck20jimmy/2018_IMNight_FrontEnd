@@ -8,7 +8,8 @@ var remind_modal = new Vue({
 	data: {
 		message: '',
 		drawnCard: false,
-		takenDiscount: false
+		takenDiscount: false,
+		all_performers_drawn: false
 	}
 })
 
@@ -29,7 +30,8 @@ var coupon = new Vue({
 		name:"",
 		content:"",
 		deadline:"",
-		img:""
+		img:"",
+		rareness:""
 	}
 })
 
@@ -82,9 +84,13 @@ function getDrawn() {
             withCredentials: true
         },
         success: function(data) {
-        	console.log(data);
+        	// console.log(data);
 			remind_modal.drawnCard = data.performer_drawn;
 			remind_modal.takenDiscount = data.vocher_drawn;
+			remind_modal.all_performers_drawn = data.all_performers_drawn;
+			if (remind_modal.all_performers_drawn) {
+				remind_modal.drawnCard = true;
+			}
 			// remind_modal.drawnCard = false;
 			// remind_modal.takenDiscount = false;
 
@@ -107,10 +113,13 @@ function is_login_init() {
             withCredentials: true
         },
         success: function(result) {
-			// console.log(result.username);
+			// console.log(result);
 			username = result.username;
 			point = result.profile.point;
 			$('#login-text').html('<span>又見面了，'+username+'！您目前累積 '+point+' 點</span>');
+
+			// set cookie for chat room
+			Cookies.set('username', username);
 		},
 		error: function() {
 			alert('get user info fail');
@@ -158,28 +167,22 @@ function draw_coupon() {
 			coupon.img = result[0].vocher.img;
 			var deadlineText = result[0].vocher.due_time.substring(0,10);
 			coupon.deadline = deadlineText;
+			var category = result[0].vocher.category;
+
+			// category = 3;
+			if (category == 1) {
+				coupon.rareness = "普通";
+			}
+			else if (category == 2) {
+				coupon.rareness = "稀有";
+				$('#rare-text').css('color', '#3366ff');
+			}
+			else if (category == 3) {
+				coupon.rareness = "史詩";
+				$('#rare-text').css('color', '#9933ff');
+			}
 		}
 	});
-
-	// TODO
-	// $.ajax({
-	// 	type: 'post',
-	// 	url: 'https://imnight2018backend.ntu.im/earth/use/vocher/',
-	// 	xhrFields: {
-	// 		withCredentials: true
-	// 	},
-	// 	data: JSON.stringify({"label":"98734288153398325662"}),
-	// 	contentType: "application/json",
-	// 	crossDomain: true,
-	// 	beforeSend: function(request) {
-	// 		var csrftoken = Cookies.get('csrftoken');
- //   			request.setRequestHeader("X-CSRFTOKEN", csrftoken);
- //  		},
-	// 	success: function(result) {
-	// 		console.log(result);
-	// 	}
-	// });
-
 }
 
 $(function(){
@@ -192,6 +195,9 @@ $(function(){
         }
 	});
 
+	// initialize popover
+	$('[data-toggle="popover"]').popover({container: "body"});
+
 	// check if the user has logged in
 	$.ajax({
 		type: 'GET',
@@ -200,7 +206,7 @@ $(function(){
             withCredentials: true
         },
         success: function(data) {
-        	console.log('login status: ' + data.auth_status);
+        	// console.log('login status: ' + data.auth_status);
 
 			if (data.auth_status) {
 				is_login_init();

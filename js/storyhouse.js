@@ -78,7 +78,7 @@ $(function() {
             withCredentials: true
         },
         success: function(data) {
-            //console.log(data);
+            console.log(data);
             if(data.length > 4){
 				resource.storyMorethanFour = true;
 				for (var i = 0; i < 4; i++) {
@@ -89,6 +89,8 @@ $(function() {
 					resource.stories.push(data[i]);
 				}
 			}
+
+			// console.log(resource.stories);
 			
 		    // $('.lazy').Lazy({
 		    //     effect: 'fadeIn',

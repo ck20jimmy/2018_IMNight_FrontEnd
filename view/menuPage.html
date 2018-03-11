@@ -51,9 +51,28 @@
       </div>
 
       <div class="row justify-content-center my-4 no-marg">
-        <div class="col-6 col-md-3"><img data-src="../img/people.png" class="lazy img-fluid floating" onclick="loadPage('IM_people')"></div>
-        <div class="col-6 col-md-3"><img data-src="../img/sky.png" class="lazy img-fluid floating" onclick="loadPage('storyhouse')"></div>
-        <div class="col-6 col-md-3"><img data-src="../img/land.png" class="lazy img-fluid floating" onclick="loadPage('couponList')"></div>
+        <div class="col-7 col-lg-4 blur">
+          <img data-src="../img/sky.png" class="lazy img-fluid floating" onclick="loadPage('storyhouse')">
+        </div>
+        <div class="col-5 col-lg-2 d-flex flex-column justify-content-center blur px-1">
+          <div><i class="fas fa-fw fa-book"></i><h5 class="jh d-inline-block pl-2">IM故事館</h5></div>
+          <div><i class="fas fa-fw fa-graduation-cap"></i><h5 class="jh d-inline-block pl-2">課程資訊</h5></div>
+        </div>
+        <div class="col-7 col-lg-4 blur">
+          <img data-src="../img/land.png" class="lazy img-fluid floating" onclick="loadPage('couponList')">
+        </div>
+        <div class="col-5 col-lg-2 d-flex flex-column justify-content-center blur px-1">
+          <div><i class="fas fa-fw fa-gift"></i><h5 class="jh d-inline-block pl-2">優惠券列表</h5></div>
+          <div><i class="fas fa-fw fa-utensils"></i><h5 class="jh d-inline-block pl-2">商家列表</h5></div>
+        </div>
+        <div class="col-7 col-lg-4 blur">
+          <img data-src="../img/people.png" class="lazy img-fluid floating" onclick="loadPage('IM_people')">
+        </div>
+        <div class="col-5 col-lg-2 d-flex flex-column justify-content-center blur px-1">
+          <div><i class="fas fa-fw fa-child"></i><h5 class="jh d-inline-block pl-2">資管人</h5></div>
+          <div><i class="fas fa-fw fa-comments"></i><h5 class="jh d-inline-block pl-2">聊天室</h5></div>
+          <div><i class="fas fa-fw fa-user"></i><h5 class="jh d-inline-block pl-2">表演資訊</h5></div>
+        </div>
       </div>
 
       <!-- for log in modal -->
@@ -94,17 +113,20 @@
             </div>
 
             <div class="modal-body pb-0" id="remind-body">
+              <h5 v-if="all_performers_drawn" class="jh">
+                恭喜，您已經抽完資管之夜所有表演者囉！
+              </h5>
               <h5 v-if="!(drawnCard&takenDiscount)" class="jh">
                 您今日尚未 <a v-if="!drawnCard" id="draw-card" data-toggle="modal" data-target="#card-Modal">抽卡</a> 
                 <p v-if="!(drawnCard|takenDiscount)" style="display: inline-block;">及</p>
                 <a v-if="!takenDiscount" id="draw-discount" data-toggle="modal" data-target="#coupon-Modal">領取每日優惠</a>
               </h5>
-              <h5 v-if="drawnCard" class="jh">
+              <h5 v-if="drawnCard & !all_performers_drawn" class="jh">
                 本日已抽卡，快去 <a class="drawn-text" onclick="jumpPage('IM_people')">找卡友聊聊</a>！<br>
                 <!-- 本日已抽卡，快去資管人找卡友聊聊！<br> -->
               </h5>
               <h5 v-if="takenDiscount" class="jh">
-                快去使用優惠券，前往 <a class="drawn-text" onclick="jumpPage('couponList')">優惠券列表</a>
+                已領取優惠券，前往 <a class="drawn-text" onclick="jumpPage('couponList')">優惠券列表</a>
                 <!-- 本日已抽過優惠券，快去附近商家使用優惠券吧 -->
               </h5>
               <hr>
@@ -148,7 +170,7 @@
                   <br>
                 </div>
                 <div class="col-lg-8 modal-img">
-                  <img :src="img" class="rounded" style="height:100%;width:100%">
+                  <img :src="img" class="rounded" alt="card-img" style="height:100%;width:100%">
                 </div>
               </div>
                 </div>
@@ -165,7 +187,7 @@
           <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
-                  <h3 class="modal-title">恭喜獲得</h3>
+                  <h3 class="modal-title jh">恭喜獲得：</h3>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -173,18 +195,21 @@
                 <div class="modal-body">
               <div class="row text-center" id="coupon">
                 <div class="col-lg-4" id="store-des">
-                  <h4 class="title">商店名稱：</h4>
-                  <h6 class="subtitle"><!-- 季丼屋 -->{{ name }}</h6>
+                  <h4 class="title jh font-weight-normal d-inline-block">稀有度：</h4>
+                  <h4 class="subtitle jh font-weight-normal d-inline-block" id="rare-text" data-container="body" data-toggle="popover" data-placement="top" data-content="依照優惠券稀有程度，分為普通、稀有、史詩三級">{{ rareness }}</h4>
+                  <br><br>
+                  <h4 class="title jh font-weight-normal">商店名稱</h4>
+                  <h5 class="subtitle jh text-success">{{ name }}</h5>
                   <br>
-                  <h4 class="title">優惠卷內容：</h4>
-                  <h6 class="subtitle"><!-- 海苔溫玉牛丼(大) 9折 -->{{ content }}</h6>
+                  <h4 class="title jh font-weight-normal">優惠卷內容</h4>
+                  <h5 class="subtitle jh text-success">{{ content }}</h5>
                   <br>
-                  <h4 class="title">使用期限：</h4>
-                  <h6 class="subtitle">即日起至 {{ deadline }}<!-- 2018年02月14號 --></h6>
+                  <h4 class="title jh font-weight-normal">使用期限</h4>
+                  <h5 class="subtitle jh text-success">即日起至 {{ deadline }}<!-- 2018年02月14號 --></h5>
                   <br>
                 </div>
                 <div class="col-lg-8 modal-img">
-                  <img :src="img" class="rounded" style="height:100%;width:100%">
+                  <img :src="img" class="rounded" alt="coupon-img" style="height:100%;width:100%">
                 </div>
               </div>
                 </div>

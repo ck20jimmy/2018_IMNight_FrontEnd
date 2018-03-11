@@ -41,6 +41,23 @@ body {
 	line-height: 1.8rem;
 }
 
+.middle {
+	float: none;
+	vertical-align: middle;
+}
+
+.blur {
+	opacity: 0.85;
+}
+
+#rare-text:hover {
+	cursor: pointer;
+}
+
+#rare-text {
+	color: #999999;
+}
+
 #loginModal,
 #remindModal {
 	display: block;
