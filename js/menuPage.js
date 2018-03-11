@@ -86,7 +86,7 @@ function getDrawn() {
 			remind_modal.drawnCard = data.performer_drawn;
 			remind_modal.takenDiscount = data.vocher_drawn;
 			// remind_modal.drawnCard = false;
-			// remind_modal.takenDiscount = true;
+			// remind_modal.takenDiscount = false;
 
 			$('#loginModal').remove();
 			$('#remindModal').modal('toggle');
