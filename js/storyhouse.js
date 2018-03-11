@@ -1,5 +1,5 @@
 var resource = new Vue({
-    el: '.story',
+    el: '#mainContext',
     data: {
 		storyMorethanFour:false,
         stories: []
