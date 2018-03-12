@@ -24,8 +24,9 @@
 			<div class="row" id="IM_people">
 				<template v-for="person in people">
 					<div class="col-lg-3 col-sm-6 text-center mb-4 person" data-toggle="modal" data-target="#{{$index}}-Modal">
-						<img data-src="{{ person.img }}" class="rounded-circle img-fluid d-block mx-auton lazy">
-						<h3>{{ person.title }} {{ person.name }}</h3>
+						<!-- data-src => src -->
+						<img src="{{ person.performer.profile.img }}" class="rounded-circle img-fluid d-block mx-auton lazy">
+						<h3>{{ person.performer.profile.job }} {{ person.performer.username }}</h3>
 					</div>
 					<!-- Modal -->
 					<div class="modal fade" id="{{ $index }}-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -40,23 +41,23 @@
 					      		<div class="modal-body text-center">
 									<div class="row text-center">
 										<div class="col-lg-4" id="store-des">
-											<h2 class="title">{{ person.title }} {{ person.name }}</h2>
+											<h2 class="title">{{ person.performer.profile.job }} {{ person.performer.username }}</h2>
 											<br>
 											<h4 class="title">負責內容：</h4>
-											<h6 class="subtitle">{{ person.work }}</h6>
+											<h6 class="subtitle">{{ person.performer.profile.job }}</h6>
 											<br>
 											<h4 class="title">介紹：</h4>
-											<h6 class="subtitle">{{ person.intro }}</h6>
+											<h6 class="subtitle">{{ person.performer.profile.job_description }}</h6>
 											<br>
 										</div>
 										<div class="col-lg-8 modal-img">
-											<img src="{{ person.img }}" class="rounded" style="height:100%;width:100%">
+											<img src="{{ person.performer.profile.img }}" class="rounded" style="height:100%;width:100%">
 											<!-- <img data-src="{{ person.img }}" class="rounded lazy" style="height:100%;width:100%"> -->
 										</div>
 									</div>
 					      		</div>
 					      		<div class="modal-footer">
-					      			<button type="button" class="btn btn-outline-secondary person-footer-button">說聲HI</button>
+					      			<button type="button" class="btn btn-outline-secondary person-footer-button" onclick="load_chatroom('{{ person.label }}','{{ person.performer.first_name }}'+'{{ person.performer.last_name }}','{{ person.performer.username }}')">說聲HI</button>
 					      		</div>
 					    	</div>
 					  	</div>

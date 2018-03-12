@@ -40,6 +40,10 @@ function loadPage(page,callback){
 			  .done(function( script, textStatus ) {
 			    // alert('Successfully loaded script');
 			    $(window).scrollTop(0);
+			    if( callback){
+			    	callback();
+			    }
+
 			  })
 			  .fail(function( jqxhr, settings, exception ) {
 			    alert('Failed to load script');
@@ -54,9 +58,9 @@ function loadPage(page,callback){
 };
 
 
-function link(page){
+function link(page,callback){
 	$(".modal-backdrop.fade.show").remove();
-	loadPage(page);
+	loadPage(page, callback);
 }
 
 function logout() {
