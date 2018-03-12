@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name = "viewport" content = "width = device-width, initial-scale = 1, maximum-scale = 1" />
+	<title>Chatroom</title>
+
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="../css/chatroom.css">
+
+</head>
+<body>
+	<div id="mainContext">
+		<div id="chatroom" class="card">
+
+			<div id="performer-name" class="card-header text-center jh title">
+				<b>請選擇一位表演者</b>
+			</div>
+
+			<div id="list">
+			    <div id="people-list" class="collapse" aria-labelledby="headingOne" data-parent="#list">
+			      	<div id="list-content" class="row">
+			        	<div id="{{ person.label }}" class="col-sm-1 col-xs-1 list-item text-center" v-for="person in people" onclick="select_performer(this.id,'{{ person.performer.last_name }}'+'{{ person.performer.first_name }}','{{ person.performer.username }}')">
+							<img src="{{ person.performer.profile.img }}" class="rounded-circle img-fluid d-block mx-auton lazy">
+							<h6 class="title">{{ person.performer.last_name }}{{ person.performer.first_name }}</h6>
+						</div>
+			      	</div>
+			    </div>
+			    <div class="text-center" id="headingOne">
+			      	<h5 class="mb-0">
+			      	  <button id="show_list" class="btn btn-sm btn-block" data-toggle="collapse" data-target="#people-list" aria-expanded="true" aria-controls="collapseOne">
+			          	<i class="fa fa-fw fa-angle-down mt-1"></i>
+			      	  </button>
+			      	</h5>
+			    </div>
+			</div>
+
+			<div id="chatcontent" class="card-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="text-center subtitle">
+							<br>
+							welcome<br> 
+							to the<br> 
+							chatroom<br> 
+							!!!
+						</div>					
+					</div>
+				</div>
+			</div>
+			
+			<div class="card-footer">
+				<form class="input-group mb-2" id="chatform">
+					<input id="user_input" type="text" class="form-control jh" placeholder="Enter..." aria-label="" aria-describedby="basic-addon2">
+					<div class="input-group-append">
+		 				<button class="btn btn-outline-secondary btn-send jh" type="submit">Send</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+ 	<script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+	<!-- for bootstrap -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="../js/vue.min.js"></script>
+	<script src="../js/chatroom.js"></script>
+	
+	<!-- for web socket -->
+	<script src="../js/reconnecting-websocket.min.js"></script>
+	
+	<!-- for lazy load -->
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.6/jquery.lazy.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.6/jquery.lazy.plugins.min.js"></script>
+	
+	<!-- for font-awesome -->
+	<script src="../js/fontawesome-all.js"></script>
+
+</body>
+</html>
