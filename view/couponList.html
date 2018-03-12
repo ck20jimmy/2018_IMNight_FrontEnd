@@ -38,9 +38,9 @@
 			</div>
 
             <!--couponList start-->
-            <div class="row">
+            <div class="row grid">
                 <div class="cardInRow" v-for="e in coupons">
-                    <div class="star rainbow" :id="'star'+e.id" v-on:click="grow(e.id)">
+                    <!--<div class="star rainbow" :id="'star'+e.id" v-on:click="grow(e.id)">
                     </div>
                     <div class="description orbitLine showUp" :id="'orb'+e.id">
                         <h5><b>{{e.store.title}}</b></h5>
@@ -49,13 +49,22 @@
                     <div class="card box-shadow" :id="'coupen'+e.id" data-toggle="modal" :data-target="'#modal'+e.id">
                         <div class = "cit" :style="{ 'background-image' : 'url(\'' + e.img + '\')' }">
 						</div>
-						<!--<div class="cit lazy" :data-src="e.img">-->
-                    </div>
+                    </div>-->
+					<div class="card box-shadow" :id="'coupen'+e.id" data-toggle="modal" :data-target="'#modal'+e.id">
+						<!--<img class = "card-img-top" :src = "e.img" alt = "card-img-top">-->
+						<div class = "cit" :style="{ 'background-image' : 'url(\'' + e.img + '\')' }">
+						</div>
+						<div class = "card-body">
+							<h4 class="card-title">{{e.title}}</h4>
+							<h6 class="card-subtitle mb-2 text-warning">{{e.store.title}}</h6>
+						</div>
+					</div>
                 </div>
-				<center>
-					<button v-if = "vocherMorethanFour&&!selected" type="button" class="btn btn-outline-danger" onclick = "showMoreVocher()">更多優惠</button>
-				</center>
+				
             </div>
+			<center>
+				<button v-if = "vocherMorethanFour&&!selected" type="button" class="btn btn-outline-danger" onclick = "showMoreVocher()">更多優惠</button>
+			</center>
 
             <!-- pop out modal Start-->
             <div v-for="e in coupons">
