@@ -224,10 +224,10 @@ $(function(){
 	});
 
 
-	$('#rule-title').fadeTo(1000, 0.7, 'swing', function() {
+	$('#rule-title').fadeTo(1000, 0.85, 'swing', function() {
 		$('#rule-space').show("blind", 800, function() {
 			var h = $('body').height();
-			$('#content-background').css('height', h);
+			// $('#content-background').css('height', h);
 		});
 	});
 

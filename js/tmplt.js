@@ -1,5 +1,16 @@
 let prev_js = "";
 let prev_css = "";
+// var tour = new Tour({
+//   steps: [
+// 	  {
+// 	    element: "#nav-btn",
+// 	    title: "Title of my step",
+// 	    content: "Content of my step"
+// 	  }
+//   ],
+
+//   backdrop: true
+// });
 
 function loadPage(page,callback){
 	script_name = "../js/"+page+".js";
@@ -83,6 +94,34 @@ $(document).click( function (event){
 	}
 })
 
+// function startIntro(){
+//   var intro = introJs();
+//     intro.setOptions({
+//       steps: [
+//         { 
+//           intro: "Hello world!"
+//         },
+//         { 
+//           intro: "You <b>don't need</b> to define element to focus, this is a floating tooltip."
+//         },
+//         {
+//           element: document.querySelector('#nav-btn'),
+//           intro: "This is a tooltip.",
+//           position: 'bottom'
+//         },
+//         { 
+//           intro: "You <b>don't need</b> to define element to focus, this is a floating tooltip."
+//         },
+//         { 
+//           intro: "You <b>don't need</b> to define element to focus, this is a floating tooltip."
+//         },        
+//       ],
+//       showProgress: true
+
+//     });
+//     intro.start();
+// }
+
 $(document).ready(function(){
 	$('.lazy').Lazy({
 		effect: 'fadeIn',
@@ -97,4 +136,10 @@ $(document).ready(function(){
 	loadPage('menuPage');
 
 	$('#logout-btn').on('click', logout);
+
+	// Initialize the tour
+	// tour.init();
+
+	// Start the tour
+	// tour.start();
 });
