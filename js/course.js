@@ -5,25 +5,9 @@ var resource = new Vue({
         classes: []
     },
     methods: {
-        move: function(k) {
-            k = String(k);
-            /*initiate others*/
-            for (var i = 0; i < this.classes.length; i++) {
-                if (this.classes[i].id == Number(k)) {
-                    $('#card' + k).toggleClass('lift');
-                    $('#back' + k).toggleClass('transform-active');
-                    $('#cb' + k).toggleClass('moveRight');
-                } else {
-                    $('#card' + this.classes[i].id).removeClass('lift');
-                    $('#back' + this.classes[i].id).removeClass('transform-active');
-                    $('#cb' + this.classes[i].id).removeClass('moveRight');
-                }
-            }
-        },
         crack: function(k) {
             k = String(k);
 			var label = $('#task'+k).html();
-			//console.log("this is the label: "+label);
             $('#egg' + k).addClass('hide');
 
             $('#eggDown' + k).removeClass('hide');
@@ -62,20 +46,13 @@ var resource = new Vue({
 					withCredentials: true
 				},
 				success: function(data) {
-					//console.log(data,id);
-					document.getElementById("des"+id).innerHTML = String(data[0].more);
 					document.getElementById("content"+id).innerHTML = String(data[0].content);
-					//$('#des'+id).html(data[0].more);
-					//$('#content'+id).html(data[0].content);
 					document.getElementById("task"+id).innerHTML = String(data[0].task);
-					//console.log(document.getElementById("task"+id).innerHTML);
 				},
 				error: function(data) {
 					alert("fail showCourse" + data);
 				}
 			});
-			
-			this.move(id);
 		},
 		
     }
