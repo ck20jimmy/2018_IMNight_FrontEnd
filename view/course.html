@@ -25,19 +25,18 @@
             <div class="row">
                 <!--<div class="space" v-for="e in classes">-->
 				<div class="test" v-for="e in classes">
-					<div class="card hvr-curl-top-right" :id = "'card'+e.id" v-on:click = "showCourse(e.label,e.id)" :style = "{ 'background-image' : 'url(\'' + e.img + '\')' }">
-						<!--<img class="card-img" :src="e.img" v-on:click="move(e.id)">-->
+					<div class="card hvr-curl-top-right" :id = "'card'+e.id" v-on:click = "showCourse(e.label,e.id)" data-toggle="modal" :data-target="'#exampleModal'+e.id" :style = "{ 'background-image' : 'url(\'' + e.img + '\')' }">
 					</div>
 					
 					<div class="cb" :id="'cb'+e.id">
                         <h4 class="card-title"><b>{{e.name}}</b></h4>
                         <h6 class="card-subtitle"><span><img class="lazy" data-src = "../img/manager.png"></span>{{e.teacher}}</h6>
                     </div>
-					<!--back-->
+					<!--back
                     <div class="box transform" v-bind="{id: 'back'+e.id}">
 						<h5 :id = "'des'+e.id">here</h5>
 						<img class = "moreBtn" data-toggle="modal" :data-target="'#exampleModal'+e.id" src = "../img/play-button.png">
-                    </div>
+                    </div>-->
 				</div>
 					
 				<center>
