@@ -105,7 +105,7 @@ function getDrawn() {
 function is_login_init() {
 	// change navbar description
 
-	var username="使用者", point = 0;
+	var username="使用者", realName="使用者", point = 0;
 	$.ajax({
 		type: 'GET',
 		url: 'https://imnight2018backend.ntu.im/human/user/self/',
@@ -115,8 +115,9 @@ function is_login_init() {
         success: function(result) {
 			// console.log(result);
 			username = result.username;
+			realName = result.last_name + result.first_name;
 			point = result.profile.point;
-			$('#login-text').html('<span>又見面了，'+username+'！您目前累積 '+point+' 點</span>');
+			$('#login-text').html('<span>又見面了，'+realName+'！您目前累積 '+point+' 點</span>');
 
 			// set cookie for chat room
 			Cookies.set('username', username);
