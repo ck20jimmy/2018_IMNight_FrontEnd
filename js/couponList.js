@@ -39,18 +39,7 @@ var resource = new Vue({
 				}
 			});
         },
-        grow: function(k) {
-            k = String(k);
-            $('#orb' + k).toggleClass('showUp');
-            $('#star' + k).toggleClass('rainbow');
-            if ($('#star' + k).hasClass('moveback')) {
-                //$('#star' + k).addClass('moveback');
-                $('#star' + k).removeClass('moveback');
-            } else {
-                //$('#star' + k).removeClass('moveback');
-                $('#star' + k).addClass('moveback');
-            }
-        }
+        
     }
 })
 
@@ -84,6 +73,7 @@ function showAllVocher() {
 					resource.coupons.push(data[i]);
 				}
 			}
+			console.log(resource.coupons);
         },
         error: function(data) {
             alert("fail showAllVocher" + data);
