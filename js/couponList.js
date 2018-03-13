@@ -28,12 +28,13 @@ var resource = new Vue({
 				success: function(data) {
 					for(var i = 0; i < data.length; i++){
 						var isUsable = false;
+						/*console.log("teeeeest+"+resource.usableVocher.length);
 						for(var j = 0; j < resource.usableVocher.length; j++){
-							//console.log(resource.usableVocher[j].title);
 							if(data[i].id == resource.usableVocher[j].vocher.id){
 								isUsable = true;
+								break;
 							}
-						}
+						}*/
 						var object = {
 							vocher:data[i],
 							usable:isUsable
@@ -121,6 +122,19 @@ function clear() {
     resource.coupons = [];
 }
 
+function updateUsable(){
+	for(var i = 0; i < resource.allVocher.length; i++){
+		var isUsable = false;
+		for(var j = 0; j < resource.usableVocher.length; j++){
+			if(resource.allVocher[i].vocher.id == resource.usableVocher[j].vocher.id){
+				isUsable = true;
+				break;
+			}
+		}
+		resource.allVocher[i].usable = isUsable;
+	}
+}
+
 function showMoreVocher(){
 	var vocherSize = resource.coupons.length;
 	var allSize = resource.allVocher.length;
@@ -146,6 +160,7 @@ function switchCase() {
         clear();
 		resource.coupons = resource.usableVocher;
     } else {
+		updateUsable();
 		$('.switch').removeClass('sliderChecked');
 		$('.slider').removeClass('sliderMove');
         clear();
