@@ -3,21 +3,77 @@ var resource = new Vue({
     data: {
 		vocherMorethanFour:false,
         selected: false,
-        coupons: []
+        coupons: [],	//store vochers to display
+		allVocher : [],		//store all vochers
+		usableVocher : [],	//store usable vochers
     },
     methods: {
         delayShow: function(k) {
             $('#back' + k).removeClass('hide');
             $('#front' + k).addClass('shrink');
-            $('#modal-content' + k).addClass('changeBg');
         },
         dcheck: function(k) {
             $('#back' + k).addClass('hide');
             $('#front' + k).removeClass('shrink');
-            $('#modal-content' + k).removeClass('changeBg');
         },
-        submit: function(k,label) {
-            this.dcheck(k);
+        getAllVocher:function(){
+			//console.log("getAllVocher");
+			resource.allVocher = [];
+			$.ajax({
+				url: 'https://imnight2018backend.ntu.im/earth/list/vocher/',
+				type: 'GET',
+				xhrFields: {
+					withCredentials: true
+				},
+				success: function(data) {
+					for(var i = 0; i < data.length; i++){
+						var isUsable = false;
+						for(var j = 0; j < resource.usableVocher.length; j++){
+							//console.log(resource.usableVocher[j].title);
+							if(data[i].id == resource.usableVocher[j].vocher.id){
+								isUsable = true;
+							}
+						}
+						var object = {
+							vocher:data[i],
+							usable:isUsable
+						}
+						resource.allVocher.push(object);
+					}
+				},
+				error: function(data) {
+					alert("fail getAllVocher");
+				}
+			});
+		},
+		getUserVocher:function() {
+			//console.log("getUserVocher");
+			resource.usableVocher = [];
+			$.ajax({
+				url: 'https://imnight2018backend.ntu.im/earth/vocher/',
+				type: 'GET',
+				xhrFields: {
+					withCredentials: true
+				},
+				success: function(data) {
+					//console.log(data);
+					for (var i = 0; i < data.length; i++) {
+						if(data[i].be_used == false){
+							var object = {
+								vocher : data[i].vocher,
+								usable : true,
+								label : data[i].label
+							};
+							resource.usableVocher.push(object);
+						}
+					}
+				},
+				error: function(data) {
+					alert("fail getUserVocher");
+				}
+			});
+		},
+		submit: function(k,label) {
 			$.ajax({
 				type: 'POST',
 				url: 'https://imnight2018backend.ntu.im/earth/use/vocher/',
@@ -38,8 +94,10 @@ var resource = new Vue({
 					alert("fail POST" + data);
 				}
 			});
+            this.dcheck(k);
+			this.getAllVocher();
+			this.getUserVocher();
         },
-        
     }
 })
 
@@ -54,107 +112,55 @@ $(function() {
     });
 })
 
-function showAllVocher() {
-	//console.log("showAllVocher");
-    $.ajax({
-        url: 'https://imnight2018backend.ntu.im/earth/list/vocher/',
-        type: 'GET',
-        xhrFields: {
-            withCredentials: true
-        },
-        success: function(data) {
-            if(data.length > 4){
-				resource.vocherMorethanFour = true;
-				for (var i = 0; i < 4; i++) {
-					resource.coupons.push(data[i]);
-				}
-			}else{
-				for (var i = 0; i < data.length; i++) {
-					resource.coupons.push(data[i]);
-				}
-			}
-			console.log(resource.coupons);
-        },
-        error: function(data) {
-            alert("fail showAllVocher" + data);
-        }
-    });
-}
-
-
-function showUserVocher() {
-	//console.log("showUserVocher");
-    $.ajax({
-        url: 'https://imnight2018backend.ntu.im/earth/vocher/',
-        type: 'GET',
-        xhrFields: {
-            withCredentials: true
-        },
-        success: function(data) {
-            //console.log(data.length);
-            for (var i = 0; i < data.length; i++) {
-				var object = {
-					id : data[i].id,
-					label : data[i].label,
-					title : data[i].vocher.title,
-					img : data[i].vocher.img,
-					vocher : data[i].vocher,					
-					description : data[i].vocher.description,
-					due_time : data[i].vocher.due_time,
-					useable : data[i].be_used,
-					store : data[i].vocher.store
-				};
-				resource.coupons.push(object);
-				//console.log(resource.coupons[i]);
-            }
-        },
-        error: function(data) {
-            alert("fail showUserVocher" + data);
-        }
-    });
-}
+//get start
+resource.getUserVocher();
+resource.getAllVocher();
 
 /* clear array for new page */
 function clear() {
     resource.coupons = [];
 }
 
+function showMoreVocher(){
+	var vocherSize = resource.coupons.length;
+	var allSize = resource.allVocher.length;
+	//console.log(vocherSize,allSize,allSize-vocherSize);
+	if((allSize - vocherSize) > 4){
+		for(var i = vocherSize; i < vocherSize+4; i++){
+			resource.coupons.push(resource.allVocher[i]);
+		}
+		resource.vocherMorethanFour = true;		
+	}else{
+		for(var i = vocherSize; i < allSize; i++){
+			resource.coupons.push(resource.allVocher[i]);
+		}
+		resource.vocherMorethanFour = false;		
+	}
+}
+
 function switchCase() {
 	resource.selected = !resource.selected;
-    //console.log(resource.selected);
     if (resource.selected == true) {
 		$('.switch').addClass('sliderChecked');
 		$('.slider').addClass('sliderMove');
         clear();
-        showUserVocher();
+		resource.coupons = resource.usableVocher;
     } else {
 		$('.switch').removeClass('sliderChecked');
 		$('.slider').removeClass('sliderMove');
         clear();
-        showAllVocher();
+		if(resource.allVocher.length > 4){
+			resource.vocherMorethanFour = true;
+			for(var i = 0; i < 4; i++){
+				resource.coupons.push(resource.allVocher[i]);
+			}
+		}else{
+			resource.coupons = resource.allVocher;
+		}
     }
 }
 
 switchCase();
-
-function showMoreVocher(){
-    $.ajax({
-        url: 'https://imnight2018backend.ntu.im/earth/list/vocher/',
-        type: 'GET',
-        xhrFields: {
-            withCredentials: true
-        },
-        success: function(data) {
-			for (var i = 4; i < data.length; i++) {
-				resource.coupons.push(data[i]);
-			}
-        },
-        error: function(data) {
-            alert("fail" + data);
-        }
-    });
-	resource.vocherMorethanFour = false;
-}
 
 function goShop() {
     $('.modal').modal('toggle');
