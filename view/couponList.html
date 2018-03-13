@@ -94,7 +94,7 @@
                                                 <b>使用期限:</b><br /> {{e.due_time}}
                                                 <br />
                                                 <br />
-                                                <a onclick="link('shop')" class="hvr-underline-from-right">商家列表</a>
+                                                <a onclick="goShop()" class="hvr-underline-from-right">商家列表</a>
                                                 <a v-if="!e.be_used && selected" class="hvr-underline-from-right" @click="delayShow(e.id)">我要使用</a>
                                             </center>
                                         </div>

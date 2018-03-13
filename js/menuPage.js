@@ -37,6 +37,7 @@ var coupon = new Vue({
 
 function jumpPage(page) {
 	$('#remindModal').modal('toggle');
+	$(".modal-backdrop.fade.show").remove();
 	setTimeout(function(){
 		loadPage(page);
 	}, 500);
