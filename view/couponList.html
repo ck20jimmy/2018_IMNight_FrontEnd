@@ -27,7 +27,7 @@
 				</div>
 				
 				<div class="switchItem">
-                    <p>顯示抽到的之優惠券
+                    <p>顯示可用的優惠券
 						<span>
 							<label class="switch" id = "switch" onclick = "switchCase()">
 								<span class="slider round"></span>
@@ -40,73 +40,60 @@
             <!--couponList start-->
             <div class="row grid">
                 <div class="cardInRow" v-for="e in coupons">
-                    <!--<div class="star rainbow" :id="'star'+e.id" v-on:click="grow(e.id)">
-                    </div>
-                    <div class="description orbitLine showUp" :id="'orb'+e.id">
-                        <h5><b>{{e.store.title}}</b></h5>
-                        <h3><b>{{e.title}}</b></h3>
-                    </div>
-                    <div class="card box-shadow" :id="'coupen'+e.id" data-toggle="modal" :data-target="'#modal'+e.id">
-                        <div class = "cit" :style="{ 'background-image' : 'url(\'' + e.img + '\')' }">
-						</div>
-                    </div>-->
-					<div class="card box-shadow" :id="'coupen'+e.id" data-toggle="modal" :data-target="'#modal'+e.id">
-						<!--<img class = "card-img-top" :src = "e.img" alt = "card-img-top">-->
-						<div class = "cit" :style="{ 'background-image' : 'url(\'' + e.img + '\')' }">
+					<div class="card box-shadow" :id="'coupen'+e.vocher.id" data-toggle="modal" :data-target="'#modal'+e.vocher.id">
+						<div class = "cit" :style="{ 'background-image' : 'url(\'' + e.vocher.img + '\')' }">
 						</div>
 						<div class = "card-body">
-							<h4 class="card-title">{{e.title}}</h4>
-							<h6 class="card-subtitle mb-2 text-warning">{{e.store.title}}</h6>
+							<h4 class="card-title">{{e.vocher.title}}</h4>
+							<h6 class="card-subtitle mb-2 text-warning">{{e.vocher.store.title}}</h6>
 						</div>
 					</div>
                 </div>
-				
             </div>
-			<center>
+			<center style = "margin:10px;">
 				<button v-if = "vocherMorethanFour&&!selected" type="button" class="btn btn-outline-danger" onclick = "showMoreVocher()">更多優惠</button>
 			</center>
 
             <!-- pop out modal Start-->
             <div v-for="e in coupons">
-                <div class="modal fade" :id="'modal'+e.id" tabindex="-1" role="dialog">
+                <div class="modal fade" :id="'modal'+e.vocher.id" tabindex="-1" role="dialog">
                     <div class="modal-dialog " role="document">
-                        <div class="modal-content" :id="'modal-content'+e.id">
+                        <div class="modal-content" :id="'modal-content'+e.vocher.id">
                             <div class="modal-header">
-                                <h5 class="modal-title">{{e.title}}</h5>
+                                <h5 class="modal-title">{{e.vocher.title}}</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
                             </div>
 
-                            <div class="modal-body" :id="'modal-body'+e.id">
+                            <div class="modal-body" :id="'modal-body'+e.vocher.id">
                                 <div class="row">
-                                    <div class="front" :id="'front'+e.id">
+                                    <div class="front" :id="'front'+e.vocher.id">
                                         <div class="col-md-6">
-                                            <!--		<img :src="e.imgUrl" style="width:100%;">-->
-                                            <img :src="e.img" style="width:100%;">
+                                            <img :src="e.vocher.img" style="width:100%;">
                                         </div>
                                         <div class="col-md-6">
                                             <center>
-                                                <b>商店名稱:</b><br /> {{e.store.title}}
+                                                <b>商店名稱:</b><br /> {{e.vocher.store.title}}
                                                 <br />
-                                                <b>優惠券內容:</b><br /> {{e.description}}
+                                                <b>優惠券內容:</b><br /> {{e.vocher.description}}
                                                 <br />
-                                                <b>使用期限:</b><br /> {{e.due_time}}
+                                                <b>使用期限:</b><br /> {{e.vocher.due_time}}
                                                 <br />
                                                 <br />
                                                 <a onclick="goShop()" class="hvr-underline-from-right">商家列表</a>
-                                                <a v-if="!e.be_used && selected" class="hvr-underline-from-right" @click="delayShow(e.id)">我要使用</a>
+                                                <a v-if="e.usable" class="hvr-underline-from-right" @click="delayShow(e.vocher.id)">我要使用</a>
                                             </center>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="back hide" :id="'back'+e.id">
+                                <div class="back hide" :id="'back'+e.vocher.id">
                                     <center>
                                         <h4><b>確定要使用嗎?</b></h4>
                                         <p>按錯就掰掰了喔QAQ</p>
-                                        <a class="hvr-bubble-float-top" @click="dcheck(e.id)">取消</a>
-                                        <a class="hvr-bubble-float-top" @click="submit(e.id,e.label)">確認</a>
+                                        <a class="hvr-bubble-float-top" @click="dcheck(e.vocher.id)">取消</a>
+                                        <a class="hvr-bubble-float-top" @click="submit(e.vocher.id,e.label)">確認</a>
                                     </center>
                                 </div>
 
