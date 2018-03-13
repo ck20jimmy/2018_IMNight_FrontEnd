@@ -49,7 +49,7 @@ var resource = new Vue({
 					//console.log(data);
 					$('#task'+id).html(data[0].task.label);
 					$('#content'+id).html(data[0].content);
-					$('#detail'+id).html(data[0].detail);
+					//$('#detail'+id).html(data[0].detail);
 				},
 				error: function(data) {
 					alert("fail showCourse" + data);
