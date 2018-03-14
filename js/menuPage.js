@@ -116,9 +116,9 @@ function is_login_init() {
         success: function(result) {
 			// console.log(result);
 			username = result.username;
-			realName = result.last_name + result.first_name;
+			// realName = result.last_name + result.first_name;
 			point = result.profile.point;
-			$('#login-text').html('<span>又見面了，'+realName+'！您目前累積 '+point+' 點</span>');
+			$('#login-text').html('<span>又見面了，'+username+'！您目前累積 '+point+' 點</span>');
 
 			// set cookie for chat room
 			Cookies.set('username', username);
@@ -140,8 +140,8 @@ function draw_card() {
             withCredentials: true
         },
         success: function(result) {
-			console.log('draw card result:');
-			console.log(result);
+			// console.log('draw card result:');
+			// console.log(result);
 			// TODO
 			card.title = result[0].performer.profile.job;
 			card.name = result[0].performer.username;
@@ -162,8 +162,8 @@ function draw_coupon() {
             withCredentials: true
         },
         success: function(result) {
-			console.log('draw coupon result:');
-			console.log(result);
+			// console.log('draw coupon result:');
+			// console.log(result);
 			coupon.name = result[0].vocher.title;
 			coupon.content = result[0].vocher.description;
 			coupon.img = result[0].vocher.img;

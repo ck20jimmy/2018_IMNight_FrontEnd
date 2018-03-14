@@ -1,16 +1,5 @@
 let prev_js = "";
 let prev_css = "";
-// var tour = new Tour({
-//   steps: [
-// 	  {
-// 	    element: "#nav-btn",
-// 	    title: "Title of my step",
-// 	    content: "Content of my step"
-// 	  }
-//   ],
-
-//   backdrop: true
-// });
 
 function loadPage(page,callback){
 	script_name = "../js/"+page+".js";
@@ -64,8 +53,6 @@ function link(page,callback){
 }
 
 function logout() {
-	// alert('logged out!!');
-
 	$.ajax({
 		type: 'post',
 		url: 'https://imnight2018backend.ntu.im/rest_auth/logout/',
@@ -83,12 +70,38 @@ function logout() {
 			location.reload();
 		}
 	});
-
-	// $.post("https://imnight2018backend.ntu.im/rest_auth/logout/", {}, function(result){
-	// 	console.log(result);
-	// 	location.reload();
-	// });	
 }
+
+// for driver js page tour
+const driver = new Driver();
+
+// Define the steps for introduction
+driver.defineSteps([
+  {
+    element: '#nav-btn',
+    popover: {
+      title: 'Title on Popover',
+      description: 'Body of the popover',
+      position: 'right'
+    }
+  },
+  // {
+  //   element: '#second-element-introduction',
+  //   popover: {
+  //     title: 'Title on Popover',
+  //     description: 'Body of the popover',
+  //     position: 'top'
+  //   }
+  // },
+  // {
+  //   element: '#third-element-introduction',
+  //   popover: {
+  //     title: 'Title on Popover',
+  //     description: 'Body of the popover',
+  //     position: 'right'
+  //   }
+  // },
+]);
 
 $(document).click( function (event){
 	let clickover = event.target;
@@ -97,34 +110,6 @@ $(document).click( function (event){
 		$("#navbarResponsive").collapse('hide');
 	}
 })
-
-// function startIntro(){
-//   var intro = introJs();
-//     intro.setOptions({
-//       steps: [
-//         { 
-//           intro: "Hello world!"
-//         },
-//         { 
-//           intro: "You <b>don't need</b> to define element to focus, this is a floating tooltip."
-//         },
-//         {
-//           element: document.querySelector('#nav-btn'),
-//           intro: "This is a tooltip.",
-//           position: 'bottom'
-//         },
-//         { 
-//           intro: "You <b>don't need</b> to define element to focus, this is a floating tooltip."
-//         },
-//         { 
-//           intro: "You <b>don't need</b> to define element to focus, this is a floating tooltip."
-//         },        
-//       ],
-//       showProgress: true
-
-//     });
-//     intro.start();
-// }
 
 $(document).ready(function(){
 	$('.lazy').Lazy({
@@ -136,14 +121,9 @@ $(document).ready(function(){
         }
 	});
 
-	// loadPage('remindPage');
 	loadPage('menuPage');
-
 	$('#logout-btn').on('click', logout);
 
-	// Initialize the tour
-	// tour.init();
-
-	// Start the tour
-	// tour.start();
+	// Start the introduction
+	// driver.start();
 });

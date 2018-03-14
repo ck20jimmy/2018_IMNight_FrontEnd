@@ -53,56 +53,66 @@ $(document).ready(function(){
     setTimeout(function(){
 		$('.list-group-item').first().addClass('active');
 		$('.tab-pane').first().addClass('active');
+		var firstID = resource.shops[0].id;
+		$('#img-'+firstID).toggleClass('hideImg');
+		$('#des-'+firstID).toggleClass('hidescript');		
     }, 300);
 });
 
 var resource = new Vue({
 	el:'#mainContext',
 	data:{
-		shops:[]
+		shops:[],
+		lastTab: 0
 	},
 	methods:{
 		swap:function(k){
+			if (k == this.lastTab) {
+				return undefined;
+			}
+			else {
+				this.lastTab = k;
+			}
 			$('#img-'+k).toggleClass('hideImg');
 			$('#des-'+k).toggleClass('hidescript');
-			for(var i = 1;i <= this.shops.length; i++){
-				if(i != k){
+			for(var i = 0;i < this.shops.length; i++){
+				var tabID = this.shops[i].id;
+				if(tabID != k){
 					if($('#img-'+k).hasClass('hideImg')){
-						$('#img-'+i).removeClass('hideImg');
-						$('#des-'+i).addClass('hidescript');
+						$('#img-'+tabID).removeClass('hideImg');
+						$('#des-'+tabID).addClass('hidescript');
 					}else{
-						$('#img-'+i).addClass('hideImg');
-						$('#des-'+i).removeClass('hidescript');
+						$('#img-'+tabID).addClass('hideImg');
+						$('#des-'+tabID).removeClass('hidescript');
 					}
 				}
 			}
+
+			$("html, body").animate({ scrollTop: 0 }, "slow");
 		},
 		changeCss:function(k){
-			for(var i = 1;i <= this.shops.length; i++){
-				if(i == k){
-					$("#Img-"+i).toggleClass('movex');
-					$("#Des-"+i).toggleClass('moveLeft');
-					$("#DesDe-"+i).toggleClass('show');
+			if (k == this.lastTab) {
+				return undefined;
+			}
+			else {
+				this.lastTab = k;
+			}
+			for(var i = 0; i < this.shops.length; i++){
+				var tabID = this.shops[i].id;
+				if(tabID == k){
+					$("#Img-"+tabID).toggleClass('movex');
+					$("#Des-"+tabID).toggleClass('moveLeft');
+					$("#DesDe-"+tabID).toggleClass('show');
 				}else{
-					$("#Img-"+i).removeClass('movex');
-					$("#Des-"+i).removeClass('moveLeft');
-					$("#DesDe-"+i).removeClass('show');
+					$("#Img-"+tabID).removeClass('movex');
+					$("#Des-"+tabID).removeClass('moveLeft');
+					$("#DesDe-"+tabID).removeClass('show');
 				}
 			}
+			$("html, body").animate({ scrollTop: 0 }, "slow");
 		}
 	}
 });
-
-// $(function(){
-// 	$('.lazy').Lazy({
-// 		effect: 'fadeIn',
-// 		effectTime: 1000,
-// 		threshold: 0,
-//         onError: function(element) {
-//             console.log('error loading ' + element.data('src'));
-//         }
-// 	});	
-// })
 
 // $(function() {
 //     $.ajax({
