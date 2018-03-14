@@ -51,7 +51,8 @@
 				
 				<div class = "col-8" id = "detail">
 					<div class="tab-content px-3" id="nav-tabContent">
-						<div v-for = "e in shops" class = "tab-pane fade context show" :id = "'right'+e.id" role="tabpanel" :aria-labelledby="'list-'+e.id" :style="{ backgroundImage: 'url(' + e.bgUrl + ')' }">
+						<!-- <div v-for = "e in shops" class = "tab-pane fade context show" :id = "'right'+e.id" role="tabpanel" :aria-labelledby="'list-'+e.id" :style="{ backgroundImage: 'url(' + e.bg_url + ')' }"> -->
+						<div v-for = "e in shops" class = "tab-pane fade context show" :id = "'right'+e.id" role="tabpanel" :aria-labelledby="'list-'+e.id">
 							<center>
 								<p v-html = "e.info" class = "word"></p>
 								<a :href = "e.url" target="_blank" ><img :src = "e.img" class = "rightImg"></a>

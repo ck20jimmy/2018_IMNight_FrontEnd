@@ -62,7 +62,7 @@
                             <div class="modal-header">
                                 <h5 class="modal-title">{{e.vocher.title}}</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
+									<span @click="dcheck(e.vocher.id)" aria-hidden="true">&times;</span>
 								</button>
                             </div>
 
@@ -78,7 +78,7 @@
                                                 <br />
                                                 <b>優惠券內容:</b><br /> {{e.vocher.description}}
                                                 <br />
-                                                <b>使用期限:</b><br /> {{e.vocher.due_time}}
+                                                <b>使用期限:</b><br /> {{e.vocher.due_time.substring(0,10)}}
                                                 <br />
                                                 <br />
                                                 <a onclick="goShop()" class="hvr-underline-from-right">商家列表</a>
@@ -88,12 +88,12 @@
                                     </div>
                                 </div>
 
-                                <div class="back hide" :id="'back'+e.vocher.id">
+                                <div class="back pt-1 hide" :id="'back'+e.vocher.id">
                                     <center>
-                                        <h4><b>確定要使用嗎?</b></h4>
-                                        <p>按錯就掰掰了喔QAQ</p>
+                                        <h4><b>提醒：請要兌換時再到該商家給店員點選確認！</b></h4>
+                                        <p>不要自己點掉，按錯就掰掰了喔QAQ</p>
                                         <a class="hvr-bubble-float-top" @click="dcheck(e.vocher.id)">取消</a>
-                                        <a class="hvr-bubble-float-top" @click="submit(e.vocher.id,e.label)">確認</a>
+                                        <a class="hvr-bubble-float-top bg-danger" @click="submit(e.vocher.id,e.label)">確認</a>
                                     </center>
                                 </div>
 

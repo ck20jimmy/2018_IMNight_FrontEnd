@@ -11,6 +11,7 @@ var resource = new Vue({
         delayShow: function(k) {
             $('#back' + k).removeClass('hide');
             $('#front' + k).addClass('shrink');
+        	$('.modal').animate({scrollTop: 0}, 1000);
         },
         dcheck: function(k) {
             $('#back' + k).addClass('hide');

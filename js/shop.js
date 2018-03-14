@@ -39,7 +39,7 @@ $(document).ready(function(){
             withCredentials: true
         },
         success: function(data) {
-            console.log(data);
+            // console.log(data);
 			for (var i = 0; i < data.length; i++) {
 				resource.shops.push(data[i]);
 			}
@@ -48,6 +48,12 @@ $(document).ready(function(){
             alert("fail" + data);
         }
     });
+
+	// show first shop information
+    setTimeout(function(){
+		$('.list-group-item').first().addClass('active');
+		$('.tab-pane').first().addClass('active');
+    }, 300);
 });
 
 var resource = new Vue({
