@@ -50,6 +50,11 @@ body {
 	opacity: 0.85;
 }
 
+.pointer:hover {
+	cursor: pointer;
+	color: #4e274a;
+}
+
 #rare-text:hover {
 	cursor: pointer;
 }
