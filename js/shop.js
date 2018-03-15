@@ -39,9 +39,11 @@ $(document).ready(function(){
             withCredentials: true
         },
         success: function(data) {
-            // console.log(data);
+            //console.log(data);
 			for (var i = 0; i < data.length; i++) {
-				resource.shops.push(data[i]);
+				if(data[i].info != ""){
+					resource.shops.push(data[i]);
+				}
 			}
         },
         error: function(data) {
@@ -114,28 +116,4 @@ var resource = new Vue({
 	}
 });
 
-// $(function() {
-//     $.ajax({
-//         url: 'https://imnight2018backend.ntu.im/earth/list/store/',
-//         type: 'GET',
-//         xhrFields: {
-//             withCredentials: true
-//         },
-//         success: function(data) {
-//             console.log(data);
-// 			for (var i = 0; i < data.length; i++) {
-// 				resource.shops.push(data[i]);
-// 			}
-//         },
-//         error: function(data) {
-//             alert("fail" + data);
-//         }
-//     });
-// });
 
-function Intial(id){
-	$('#list-'+id).addClass('active');
-	$('#right'+id).addClass('active');
-}
-
-//Intial(resource.shops[0].id);
