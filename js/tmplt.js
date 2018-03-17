@@ -1,6 +1,29 @@
 let prev_js = "";
 let prev_css = "";
 
+// Define the tour!
+var tour = {
+id: "hello-hopscotch",
+steps: [
+  {
+    title: "My Header",
+    content: "This is the header of my page.",
+    target: "nav-btn",
+    placement: "bottom",
+    fixedElement: true,
+    xOffset: 20
+  },
+  {
+    title: "My content",
+    content: "Here is where I put my content.",
+    target: "help-icon",
+    placement: "bottom",
+    arrowOffset: 140,
+    xOffset: -150
+  }
+],
+};
+
 function loadPage(page,callback){
 	script_name = "../js/"+page+".js";
 	css_name = "../css/"+page+".css";
@@ -72,37 +95,6 @@ function logout() {
 	});
 }
 
-// for driver js page tour
-const driver = new Driver();
-
-// Define the steps for introduction
-driver.defineSteps([
-  {
-    element: '#nav-btn',
-    popover: {
-      title: 'Title on Popover',
-      description: 'Body of the popover',
-      position: 'right'
-    }
-  },
-  // {
-  //   element: '#second-element-introduction',
-  //   popover: {
-  //     title: 'Title on Popover',
-  //     description: 'Body of the popover',
-  //     position: 'top'
-  //   }
-  // },
-  // {
-  //   element: '#third-element-introduction',
-  //   popover: {
-  //     title: 'Title on Popover',
-  //     description: 'Body of the popover',
-  //     position: 'right'
-  //   }
-  // },
-]);
-
 $(document).click( function (event){
 	let clickover = event.target;
 	let opened = $(".navbar-collapse").hasClass('show');
@@ -124,6 +116,23 @@ $(document).ready(function(){
 	loadPage('menuPage');
 	$('#logout-btn').on('click', logout);
 
-	// Start the introduction
-	// driver.start();
+	// Start the tour!
+	hopscotch.startTour(tour);
+	// startIntro();
 });
+
+// for intro js
+function startIntro(){
+var intro = introJs();
+  intro.setOptions({
+    steps: [
+      { 
+        intro: "Hello world!"
+      },
+      { 
+        intro: "You <b>don't need</b> to define element to focus, this is a floating tooltip."
+      },
+    ]
+  });
+  intro.start();
+}

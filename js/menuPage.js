@@ -142,16 +142,16 @@ function draw_card() {
         success: function(result) {
 			// console.log('draw card result:');
 			// console.log(result);
-			// TODO
 			card.title = result[0].performer.profile.job;
 			card.name = result[0].performer.username;
 			card.work = result[0].performer.profile.job_description;
 			card.intro = result[0].performer.profile.bio;
 			card.img = result[0].performer.profile.img;
+
+			remind_modal.drawnCard = true;
 		}
 	});
 
-	
 }
 
 function draw_coupon() {
@@ -183,6 +183,8 @@ function draw_coupon() {
 				coupon.rareness = "史詩";
 				$('#rare-text').css('color', '#9933ff');
 			}
+
+			remind_modal.takenDiscount = true;
 		}
 	});
 }

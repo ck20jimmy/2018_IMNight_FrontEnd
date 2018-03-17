@@ -18,11 +18,11 @@ body {
 }
 
 #nav-btn {
-	position: fixed;
-	z-index: 1050;
+	/* position: fixed; */
+	/* z-index: 1050; */
 	width: 150px;
-	top: 2.3vh;
-	left: 2vh 
+	/* top: 2.3vh; */
+	/* left: 2vh  */
 }
 
 /* end */
@@ -216,4 +216,16 @@ nav{
   to {
     left: 0;
   }
+}
+
+#fixed-center-point {
+	position: fixed;
+	left: 40vw;
+	top: 40vh;
+}
+
+@media screen and (min-width: 0px) and (max-width: 600px) {
+	#help-icon {
+		left: -10vw;
+	}
 }
