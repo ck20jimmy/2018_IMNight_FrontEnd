@@ -101,6 +101,15 @@ function getDrawn() {
 	});	
 }
 
+function not_login_init() {
+	$('#remindModal').remove();
+	$('#loginModal').modal('toggle');
+	$('#logout-btn').remove();
+
+	$('#collapseLand').html('<li><a>請先登入以瀏覽</a></li>');
+	$('#collapsePeople').html('<li><a>請先登入以瀏覽</a></li>');
+}
+
 // if the user has logged in, check if he has drawn card or taken discount
 // then get news info
 function is_login_init() {
@@ -218,8 +227,7 @@ $(function(){
 
 			// if the user hasn't logged in, remove remind modal
 			else {
-				$('#remindModal').remove();
-				$('#loginModal').modal('toggle');
+				not_login_init();
 			}
 		},
 		error: function() {
@@ -241,89 +249,3 @@ $(function(){
 	$('#draw-card').on('click', draw_card);
 	$('#draw-discount').on('click', draw_coupon);
 })
-
-// function statusChangeCallback(response) {
-// 	console.log('statusChangeCallback');
-// 	console.log(response.authResponse);
-// 	if (response.status === 'connected') {
-// 		// alert('you\'ve logged in!!!');
-
-// 		// if the user has logged in, check if he has drawn card or taken discount
-// 		// then get news info
-// 		// then remove log in modal
-// 		getDrawn();
-// 		getNews();
-// 		$('#loginModal').remove();
-// 		$('#remindModal').modal('toggle');
-// 	}
-// 	else {
-// 		// alert('you\'ve not logged in!!!');
-// 		$('#remindModal').remove();
-// 		$('#loginModal').modal('toggle');
-
-// 		// $('#fb-btn').on('click', function(){
-// 		// 	FB.login(function(response) {
-// 		// 		// console.log(response);
-
-// 		// 		if (response.status === 'connected') {
-// 		// 			alert('you\'ve logged in!!!!!');
-// 		// 		}
-// 		// 		else {
-// 		// 			alert('you\'ve cancelled login.')
-// 		// 		}
-// 		// 	});
-// 		// });
-// 	}
-// }
-
-// var login_modal = new Vue({
-// 	el: '#loginModal',
-// 	data: {
-// 		message: '',
-// 		loggedIn: false
-// 	}
-// })
-
-
-	// check if the user has logged in (at backend app)
-	// $.ajax({
-	// 	type: 'GET',
-	// 	url: 'https://imnight2018backend.ntu.im/accounts/check/login/',
-	// 	xhrFields: {
- //            withCredentials: true
- //        },
- //        success: function(data) {
-	// 		login = data.auth_status;
-
-	// 		// if the user has logged in, check if he has drawn card or taken discount
-	// 		// then get news info
-	// 		// then remove log in modal
-	// 		if (login) {
-	// 			getDrawn();
-	// 			getNews();
-	// 			$('#loginModal').remove();
-	// 			$('#remindModal').modal('toggle');
-	// 		}
-
-	// 		// if the user hasn't logged in, remove remind modal
-	// 		else {
-	// 			$('#remindModal').remove();
-	// 			$('#loginModal').modal('toggle');
-	// 		}
-	// 	},
-	// 	error: function() {
-	// 		alert('get login status fail!');
-	// 	}
-	// });	
-
-	// check if the user has logged in (at facebook app)
-	// $.ajaxSetup({ cache: true });
-	// $.getScript('https://connect.facebook.net/en_US/sdk.js', function(){
-	//     FB.init({
-	//       appId      : '155420448490917',
-	//       cookie     : true,
-	//       xfbml      : true,
-	//       version    : 'v2.12'
-	//     });
-	//     FB.getLoginStatus(statusChangeCallback);
-	// });

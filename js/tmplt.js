@@ -117,7 +117,7 @@ $(document).ready(function(){
 	$('#logout-btn').on('click', logout);
 
 	// Start the tour!
-	hopscotch.startTour(tour);
+	// hopscotch.startTour(tour);
 	// startIntro();
 });
 
