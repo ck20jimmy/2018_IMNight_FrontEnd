@@ -3,22 +3,89 @@ var tour = {
 id: "hello-hopscotch",
 steps: [
   {
-    title: "My content",
-    content: "Here is where I put my content.",
+    title: '歡迎！',
+    content: '首次來到2018臺大資管之夜\"緣\"嗎？<br>點選Next觀看使用說明！',
     target: "help-icon",
     placement: "bottom",
-    arrowOffset: 140,
-    xOffset: -150
+    arrowOffset: 150,
+    xOffset: -150,
+    onShow: function(){
+    	setTimeout(function(){
+    		$('#remind-close').attr('disabled', true);
+    	}, 1000);
+    	$('#remindModal').modal('show');
+    }
   },
   {
-    title: "My Header",
-    content: "This is the header of my page.",
+    title: "主畫面按鈕",
+    content: "點擊左上角字樣來回到主畫面。<br>在主畫面，你可以抽卡、抽每日優惠券，和查看最新消息。<br>時不時回主畫面查看吧！",
     target: "nav-btn",
     placement: "bottom",
     fixedElement: true,
     xOffset: 20
   },
+  {
+    title: "天天抽卡、抽優惠券吧",
+    content: "在提醒視窗中點擊來抽卡和每日優惠券。<br>你可以前往聊天室，和抽過的卡友聊聊；<br>也可以前往優惠券列表，去附近商家使用你的優惠券！",
+    target: "remind-body",
+    placement: "bottom",
+    xOffset: 50,
+    yOffset: -30,
+    onNext: function(){
+    	$('#remindModal').modal('hide');
+    }
+  },
+  {
+    title: "選單",
+    content: "點擊選單或主畫面下方的導覽列來查看2018資管之夜資訊，以及瀏覽天、地、人緣所有內容。",
+    target: "burger-toggler",
+    placement: "bottom",
+    xOffset: -230,
+    arrowOffset: 230,
+    onNext: function(){
+    	$('#burger-toggler').trigger('click');
+    }
+  },
+  {
+    title: '尋找彩蛋、累積點數！',
+    content: '每次抽卡、抽優惠券都能加30點，找到藏在「天緣」文章中的彩蛋也能加20點。<br>集點越多越有機會在之夜當天抽到豐厚獎品。',
+    target: "login-text",
+    placement: "bottom",
+    xOffset: 50
+  },
+  {
+    title: '幫助',
+    content: '再次打開幫助，請點選此圖示。<br>用抽卡來開啟你今天的緣吧！',
+    target: "help-icon",
+    placement: "bottom",
+    arrowOffset: 150,
+    xOffset: -150
+  },  
 ],
+onEnd: function(){
+	$('#remindModal').modal('show');
+	$('#remind-close').attr('disabled', false);
+	$.ajax({
+		type: 'post',
+		url: 'https://imnight2018backend.ntu.im/accounts/read/tutorial/',
+		xhrFields: {
+			withCredentials: true
+		},
+		data: {},
+		crossDomain: true,
+		beforeSend: function(request) {
+			var csrftoken = Cookies.get('csrftoken');
+   			request.setRequestHeader("X-CSRFTOKEN", csrftoken);
+  		},
+		success: function(result) {
+			location.reload();
+		}
+	});
+},
+onClose: function(){
+	$('#remindModal').modal('show');
+	$('#remind-close').attr('disabled', false);	
+}
 };
 
 var user_status = new Vue({
@@ -97,7 +164,6 @@ function logout() {
    			request.setRequestHeader("X-CSRFTOKEN", csrftoken);
   		},
 		success: function(result) {
-			console.log(result);
 			location.reload();
 		}
 	});
@@ -105,6 +171,26 @@ function logout() {
 
 function gainPoints(points) {
 	user_status.point += points;
+}
+
+function startTour(){
+	if ($(window).width() > 992) {
+		tour.steps[3].target = "nav-people";
+		tour.steps[3].xOffset = 50;
+		tour.steps[3].arrowOffset = 0;
+		tour.steps[3].onNext = undefined;
+	}
+	else {
+
+	}
+	if (prev_js != "../js/menuPage.js") {
+		var tour2 = $.extend(true, {}, tour);
+		tour2.steps.splice(2,1);
+		hopscotch.startTour(tour2);
+	}
+	else {
+		hopscotch.startTour(tour);
+	}
 }
 
 $(document).click( function (event){
@@ -127,24 +213,5 @@ $(document).ready(function(){
 
 	loadPage('menuPage');
 	$('#logout-btn').on('click', logout);
-
-	// Start the tour!
-	hopscotch.startTour(tour);
-	// startIntro();
+	$('#help-icon').on('click', startTour);
 });
-
-// for intro js
-function startIntro(){
-var intro = introJs();
-  intro.setOptions({
-    steps: [
-      { 
-        intro: "Hello world!"
-      },
-      { 
-        intro: "You <b>don't need</b> to define element to focus, this is a floating tooltip."
-      },
-    ]
-  });
-  intro.start();
-}

@@ -102,6 +102,11 @@ function getDrawn() {
 
 			$('#loginModal').remove();
 			$('#remindModal').modal('toggle');
+
+			// if the user hasn't seen tour yet, start the tour!
+			if (!data.is_read_tutorial) {
+				startTour();
+			}
 		}
 	});	
 }

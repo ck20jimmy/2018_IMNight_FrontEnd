@@ -12,7 +12,8 @@ body {
 	color: #272727;
 }
 
-#nav-btn:hover {
+#nav-btn:hover,
+#help-icon:hover {
 	cursor: pointer;
 	color: #4e274a;
 }
@@ -216,12 +217,6 @@ nav{
   to {
     left: 0;
   }
-}
-
-#fixed-center-point {
-	position: fixed;
-	left: 40vw;
-	top: 40vh;
 }
 
 @media screen and (min-width: 0px) and (max-width: 600px) {
