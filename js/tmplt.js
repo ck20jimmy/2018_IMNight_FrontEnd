@@ -6,9 +6,9 @@ function loadPage(page,callback){
 	css_name = "../css/"+page+".css";
 
 	if( ! (script_name == prev_js && css_name == prev_css) || prev_js == "../js/menuPage.js" ){
-		// console.log(prev_js)
 		
 		//hide the nav bar
+		$(".sidenav-second-level").collapse('hide')
 		$("#navbarResponsive").collapse('hide');
 
 		//remove previous page's html & js & css
