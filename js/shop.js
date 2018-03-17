@@ -55,9 +55,14 @@ $(document).ready(function(){
     setTimeout(function(){
 		$('.list-group-item').first().addClass('active');
 		$('.tab-pane').first().addClass('active');
+
 		var firstID = resource.shops[0].id;
+		resource.lastTab = firstID;
 		$('#img-'+firstID).toggleClass('hideImg');
-		$('#des-'+firstID).toggleClass('hidescript');		
+		$('#des-'+firstID).toggleClass('hidescript');
+		$("#Img-"+firstID).toggleClass('movex');
+		$("#Des-"+firstID).toggleClass('moveLeft');
+		$("#DesDe-"+firstID).toggleClass('show');
     }, 300);
 });
 
