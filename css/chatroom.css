@@ -82,6 +82,8 @@
 	border-color: rgba(0,0,0,0.2);
 	border-radius: .4em;
 	padding: 5px;
+	margin: 5px;
+	margin-left: 10px;
 }
 
 .speech-left-bubble:after {
@@ -126,3 +128,8 @@
 	margin-right: -10px;
 }
 
+.message-time{
+	font-size: x-small;
+	/* top: 5px; */
+	/* float: right; */
+}

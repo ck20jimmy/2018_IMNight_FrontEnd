@@ -31,9 +31,13 @@ $(document).ready(function(){
     });
 });
 
-function select_performer( label,name, uname ){
+function select_performer( label, name, uname ){
     $("#performer-name").empty().text(name);
     $("#chatcontent").empty();
+
+    load_history(label, uname);
+
+    // console.log(label)
 
     if( current_label == "" ){
 		current_label = label;
@@ -46,12 +50,16 @@ function select_performer( label,name, uname ){
 	}
 
 	chatsock.onmessage = function(message) {
-        var data = JSON.parse(JSON.parse(message.data));
+        var data = JSON.parse(message.data);
         let r = $("<div></div>");
         r.addClass("row");
         
         let col = $("<div></div>");
-        col.addClass("col-sm-12");
+        col.addClass("col-xs-6");
+
+        let time = $("<div></div>");
+        time.addClass("message-time col-xs-6");
+        time.append(data.timestamp.split(".")[0].replace("T",", "));
 
         let m = $("<div></div>");
 
@@ -59,13 +67,20 @@ function select_performer( label,name, uname ){
         if( uname != data.handle ){
         	m.addClass("speech-right-bubble float-right");
         	m.append(data.message);
+            col.append(m);
+            r.append(time);
+            r.append(col);
+            r.addClass("justify-content-end")
         }
         else{
         	m.addClass("speech-left-bubble float-left");
         	m.append(data.message);
+            col.append(m);
+            r.append(col);
+            r.append(time);
+            r.addClass("justify-content-start")
         }
-        col.append(m);
-        r.append(col);
+        
         $('#chatcontent').append(r);
 	};
 
@@ -83,6 +98,62 @@ function select_performer( label,name, uname ){
     });
 
     $("#people-list").collapse('hide');
+}
+
+function load_history(label,uname){
+    let chat_data = "";
+    $.ajax({
+        type: 'GET',
+        url: 'https://imnight2018backend.ntu.im/human/chat/'+label+'/',
+        xhrFields: {
+            withCredentials: true
+        },
+        success: function(data) {
+            chat_data = data ;
+            console.log(data);
+            for( i = 0 ; i < chat_data.length ; i++){
+                let r = $("<div></div>");
+                r.addClass("row");
+                
+                let col = $("<div></div>");
+                col.addClass("col-xs-6");
+
+                let time = $("<div></div>");
+                time.addClass("message-time col-xs-6")
+
+                let m = $("<div></div>");
+
+                console.log(chat_data[i].handle.username)
+
+                //user message is on the right side
+                if( chat_data[i].handle.username != uname ){
+                    m.addClass("speech-right-bubble float-right ");
+                    m.append(chat_data[i].message);
+                    r.addClass("justify-content-end")
+                    time.append(chat_data[i].timestamp.split(".")[0].replace("T",", "))
+                    col.append(m);
+                    r.append(time);
+                    r.append(col);
+                }
+                else{
+                    m.addClass("speech-left-bubble float-left");
+                    m.append(chat_data[i].message);
+                    r.addClass("justify-content-start")
+                    time.append(chat_data[i].timestamp.split(".")[0].replace("T",", "))
+                    col.append(m);
+                    r.append(col);
+                    r.append(time)
+                }
+                
+                $('#chatcontent').append(r);
+            }
+
+        },
+        error: function() {
+            alert('get get performer-list fail!');
+        }
+    });
+
 }
 
 $(document).click( function (event){
