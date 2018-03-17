@@ -15,6 +15,7 @@ $(document).ready( function(){
         },
         success: function(data) {
         	people._data.people = data;
+        	// console.log(data);
 		},
 		error: function() {
 			alert('get IM_People fail!');
@@ -34,8 +35,8 @@ $(function(){
 })
 
 //user link function in tmplt.js
-function load_chatroom( label, name, uname ){
+function load_chatroom( label, uname ){
 	link('chatroom', function(){
-		select_performer( label, name, uname )
+		select_performer( label, uname )
 	});
 }

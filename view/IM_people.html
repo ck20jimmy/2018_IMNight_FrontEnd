@@ -23,10 +23,11 @@
 			
 			<div class="row" id="IM_people">
 				<template v-for="person in people">
-					<div class="col-lg-3 col-sm-6 text-center mb-4 person" data-toggle="modal" data-target="#{{$index}}-Modal">
+					<div class="col-lg-3 text-center person" data-toggle="modal" data-target="#{{$index}}-Modal">
 						<!-- data-src => src -->
 						<img src="{{ person.performer.profile.img }}" class="rounded-circle img-fluid d-block mx-auton lazy">
-						<h3>{{ person.performer.profile.job }} {{ person.performer.username }}</h3>
+						<b><h4>{{ person.performer.profile.job }}</h4></b>
+						<b><h4>{{ person.performer.username }}</h4></b>
 					</div>
 					<!-- Modal -->
 					<div class="modal fade" id="{{ $index }}-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -57,7 +58,7 @@
 									</div>
 					      		</div>
 					      		<div class="modal-footer">
-					      			<button type="button" class="btn btn-outline-secondary person-footer-button" onclick="load_chatroom('{{ person.label }}','{{ person.performer.first_name }}'+'{{ person.performer.last_name }}','{{ person.performer.username }}')">說聲HI</button>
+					      			<button type="button" class="btn btn-outline-secondary person-footer-button" onclick="load_chatroom('{{ person.label }}','{{ person.performer.last_name }}'+'{{ person.performer.first_name }}','{{ person.performer.username }}')">說聲HI</button>
 					      		</div>
 					    	</div>
 					  	</div>
