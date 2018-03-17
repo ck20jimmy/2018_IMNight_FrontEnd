@@ -49,6 +49,7 @@
 
 .person{
 	transition: 0.7s;
+	width: 30%;
 }
 
 @keyframes bgFadeIn{

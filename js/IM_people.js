@@ -15,6 +15,7 @@ $(document).ready( function(){
         },
         success: function(data) {
         	people._data.people = data;
+        	// console.log(data);
 		},
 		error: function() {
 			alert('get IM_People fail!');
