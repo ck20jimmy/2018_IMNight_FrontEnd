@@ -44,11 +44,14 @@
 			            <i class="fa fa-fw fa-angle-down float-right mt-1"></i>
 		          	</a>
 		          	<ul class="sidenav-second-level collapse" id="collapseLand" data-parent="#exampleAccordion">
-			            <li>
+			            <li v-if="loggedIn">
 			              <a href="#" onclick="loadPage('couponList')">優惠卷列表</a>
 			            </li>
-			            <li>
+			            <li v-if="loggedIn">
 			              <a href="#" onclick="loadPage('shop')">商家列表</a>
+			            </li>
+			            <li v-if="!loggedIn">
+			            	<a>請先登入以瀏覽</a>
 			            </li>
 		          	</ul>
 		        </li>
@@ -59,22 +62,28 @@
 			            <i class="fa fa-fw fa-angle-down float-right mt-1"></i>
 		          	</a>
 		          	<ul class="sidenav-second-level collapse" id="collapsePeople" data-parent="#exampleAccordion">
-			            <li>
+			            <li v-if="loggedIn">
 			                <a href="#" onclick="loadPage('IM_people')">資管人</a>
 			            </li>
-			            <li>
+			            <li v-if="loggedIn">
 			              	<a href="#" onclick="loadPage('chatroom')">聊天室</a>
 			            </li>
-			            <li>
+			            <li v-if="loggedIn">
 			              	<a href="#" onclick="loadPage('show_intro')">表演介紹</a>
 			            </li>
-		          	</ul>
+			            <li v-if="!loggedIn">
+			            	<a>請先登入以瀏覽</a>
+			            </li>
+		          	</ul>         	
 		        </li>
 	      	</ul>
 
 	     	<ul class="navbar-nav ml-auto jh">
 	        	<li class="nav-item" id="login-text" style="margin-right:100px;">
-	        		<a class="nav-link" href="https://imnight2018backend.ntu.im/allauth/facebook/login/">
+		          	<a v-if="loggedIn" class="navbar-text">
+		            	又見面了，{{ username }}！您目前累積 {{ point }} 點
+		        	</a>	        		
+	        		<a v-else class="nav-link" href="https://imnight2018backend.ntu.im/allauth/facebook/login/">
 		          		您尚未<p class="text-warning d-inline">登入</p>
 		          	</a>
 		        </li>
@@ -88,7 +97,7 @@
 		            	聯繫我們
 		        	</a>
 		        </li>
-		        <li class="nav-item">
+		        <li v-if="loggedIn" class="nav-item">
 		          	<a class="nav-link" id="logout-btn">
 		            	Logout
 		        	</a>

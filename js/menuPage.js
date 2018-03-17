@@ -1,7 +1,3 @@
-var login = false;
-var cardDrawn = false;
-var discountTaken = false;
-
 // declare vue objects
 var remind_modal = new Vue({
 	el: '#remindModal',
@@ -110,21 +106,9 @@ function getDrawn() {
 	});	
 }
 
-function not_login_init() {
-	$('#remindModal').remove();
-	$('#loginModal').modal('toggle');
-	$('#logout-btn').remove();
-
-	$('#collapseLand').html('<li><a>請先登入以瀏覽</a></li>');
-	$('#collapsePeople').html('<li><a>請先登入以瀏覽</a></li>');
-}
-
 // if the user has logged in, check if he has drawn card or taken discount
 // then get news info
 function is_login_init() {
-	// change navbar description
-
-	var username="使用者", realName="使用者", point = 0;
 	$.ajax({
 		type: 'GET',
 		url: 'https://imnight2018backend.ntu.im/human/user/self/',
@@ -133,13 +117,11 @@ function is_login_init() {
         },
         success: function(result) {
 			// console.log(result);
-			username = result.username;
-			// realName = result.last_name + result.first_name;
-			point = result.profile.point;
-			$('#login-text').html('<a class="navbar-text">又見面了，'+username+'！您目前累積 '+point+' 點</a>');
 
-			// set cookie for chat room
-			Cookies.set('username', username);
+			// revise vue object at tmplt.js
+			user_status.loggedIn = true;
+			user_status.username = result.username;
+			user_status.point = result.profile.point;
 		},
 		error: function() {
 			alert('get user info fail');
@@ -168,6 +150,7 @@ function draw_card() {
 			card.img = result[0].performer.profile.img;
 
 			remind_modal.drawnCard = true;
+			gainPoints(30);
 		}
 	});
 
@@ -204,6 +187,7 @@ function draw_coupon() {
 			}
 
 			remind_modal.takenDiscount = true;
+			gainPoints(30);
 		}
 	});
 }
@@ -237,7 +221,8 @@ $(function(){
 
 			// if the user hasn't logged in, remove remind modal
 			else {
-				not_login_init();
+				$('#remindModal').remove();
+				$('#loginModal').modal('toggle');
 			}
 		},
 		error: function() {

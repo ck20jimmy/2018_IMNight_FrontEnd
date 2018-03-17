@@ -1,10 +1,15 @@
-let prev_js = "";
-let prev_css = "";
-
 // Define the tour!
 var tour = {
 id: "hello-hopscotch",
 steps: [
+  {
+    title: "My content",
+    content: "Here is where I put my content.",
+    target: "help-icon",
+    placement: "bottom",
+    arrowOffset: 140,
+    xOffset: -150
+  },
   {
     title: "My Header",
     content: "This is the header of my page.",
@@ -13,17 +18,20 @@ steps: [
     fixedElement: true,
     xOffset: 20
   },
-  {
-    title: "My content",
-    content: "Here is where I put my content.",
-    target: "help-icon",
-    placement: "bottom",
-    arrowOffset: 140,
-    xOffset: -150
-  }
 ],
 };
 
+var user_status = new Vue({
+	el: '#navbarResponsive',
+	data: {
+		loggedIn: false,
+		username: '',
+		point: 0
+	}
+});
+
+let prev_js = "";
+let prev_css = "";
 function loadPage(page,callback){
 	script_name = "../js/"+page+".js";
 	css_name = "../css/"+page+".css";
@@ -93,6 +101,10 @@ function logout() {
 			location.reload();
 		}
 	});
+}
+
+function gainPoints(points) {
+	user_status.point += points;
 }
 
 $(document).click( function (event){
