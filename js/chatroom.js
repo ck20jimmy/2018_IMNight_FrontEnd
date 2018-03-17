@@ -31,8 +31,8 @@ $(document).ready(function(){
     });
 });
 
-function select_performer( label, name, uname ){
-    $("#performer-name").empty().text(name);
+function select_performer( label, uname ){
+    $("#performer-name").empty().text(uname);
     $("#chatcontent").empty();
 
     load_history(label, uname);

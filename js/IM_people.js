@@ -35,8 +35,8 @@ $(function(){
 })
 
 //user link function in tmplt.js
-function load_chatroom( label, name, uname ){
+function load_chatroom( label, uname ){
 	link('chatroom', function(){
-		select_performer( label, name, uname )
+		select_performer( label, uname )
 	});
 }
