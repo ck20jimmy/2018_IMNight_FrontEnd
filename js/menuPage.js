@@ -11,7 +11,7 @@ var remind_modal = new Vue({
 		takenDiscount: false,
 		all_performers_drawn: false
 	}
-})
+});
 
 var card = new Vue({
 	el: "#card",
@@ -20,7 +20,8 @@ var card = new Vue({
 		name:"",
 		work:"",
 		intro:"",
-		img:""
+		img:"",
+		label:""
 	}
 });
 
@@ -33,13 +34,21 @@ var coupon = new Vue({
 		img:"",
 		rareness:""
 	}
-})
+});
 
-function jumpPage(page) {
+function jumpPage(page, label="", uname="") {
 	$('#remindModal').modal('toggle');
 	$(".modal-backdrop.fade.show").remove();
 	setTimeout(function(){
-		loadPage(page);
+		if (page == "chatroom") {
+			console.log(label);
+			loadPage('chatroom', function(){
+				select_performer( label, uname );
+			});
+		}
+		else {
+			loadPage(page);
+		}
 	}, 500);
 }
 
@@ -127,7 +136,7 @@ function is_login_init() {
 			username = result.username;
 			// realName = result.last_name + result.first_name;
 			point = result.profile.point;
-			$('#login-text').html('<span>又見面了，'+username+'！您目前累積 '+point+' 點</span>');
+			$('#login-text').html('<a class="navbar-text">又見面了，'+username+'！您目前累積 '+point+' 點</a>');
 
 			// set cookie for chat room
 			Cookies.set('username', username);
@@ -149,10 +158,11 @@ function draw_card() {
             withCredentials: true
         },
         success: function(result) {
-			// console.log('draw card result:');
-			// console.log(result);
+			console.log('draw card result:');
+			console.log(result);
 			card.title = result[0].performer.profile.job;
 			card.name = result[0].performer.username;
+			card.label = result[0].label;
 			card.work = result[0].performer.profile.job_description;
 			card.intro = result[0].performer.profile.bio;
 			card.img = result[0].performer.profile.img;

@@ -150,34 +150,34 @@
       <!-- Card Modal -->
       <div class="modal fade" id="card-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content text-center">
+            <div class="modal-content text-center" id="card">
               <div class="modal-header">
-                  <h3 class="modal-title">您抽到的是...</h3>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body text-center">
-              <div class="row text-center" id="card">
-                <div class="col-lg-4">
-                  <h2 class="title">{{ title }} {{ name }}<!-- 副召 林雨新 --></h2>
-                  <br>
-                  <h4 class="title">負責內容</h4>
-                  <h6 class="subtitle">{{ work }}<!-- ??? --></h6>
-                  <br>
-                  <h4 class="title">介紹</h4>
-                  <h6 class="subtitle">{{ intro }}<!-- 人稱火焰飆仔 --></h6>
-                  <br>
-                </div>
-                <div class="col-lg-8 modal-img">
-                  <img :src="img" class="rounded" alt="card-img" style="height:100%;width:100%">
+                <h3 class="modal-title">您抽到的是...</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body text-center">
+                <div class="row text-center">
+                  <div class="col-lg-4">
+                    <h2 class="title">{{ title }} {{ name }}<!-- 副召 林雨新 --></h2>
+                    <br>
+                    <h4 class="title">負責內容</h4>
+                    <h6 class="subtitle">{{ work }}<!-- ??? --></h6>
+                    <br>
+                    <h4 class="title">介紹</h4>
+                    <h6 class="subtitle">{{ intro }}<!-- 人稱火焰飆仔 --></h6>
+                    <br>
+                  </div>
+                  <div class="col-lg-8 modal-img">
+                    <img :src="img" class="rounded" alt="card-img" style="height:100%;width:100%">
+                  </div>
                 </div>
               </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-secondary card-footer-button" onclick="jumpPage('chatroom')">說聲HI</button>
-              <button type="button" class="btn btn-outline-secondary card-footer-button" onclick="jumpPage('IM_people')">所有資管人</button>
-                </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary card-footer-button" onclick="jumpPage('chatroom', '{{ label }}', '{{ name }}')">說聲HI</button>
+                <button type="button" class="btn btn-outline-secondary card-footer-button" onclick="jumpPage('IM_people')">所有資管人</button>
+              </div>
             </div>
           </div>
       </div>
