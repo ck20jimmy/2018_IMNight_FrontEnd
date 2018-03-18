@@ -76,10 +76,7 @@ onEnd: function(){
 		beforeSend: function(request) {
 			var csrftoken = Cookies.get('csrftoken');
    			request.setRequestHeader("X-CSRFTOKEN", csrftoken);
-  		},
-		success: function(result) {
-			location.reload();
-		}
+  		}
 	});
 },
 onClose: function(){
@@ -212,6 +209,5 @@ $(document).ready(function(){
 	});
 
 	loadPage('menuPage');
-	$('#logout-btn').on('click', logout);
 	$('#help-icon').on('click', startTour);
 });
