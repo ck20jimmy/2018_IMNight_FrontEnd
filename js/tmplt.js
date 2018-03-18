@@ -31,11 +31,11 @@ steps: [
     title: "天天抽卡、抽優惠券吧",
     content: "在提醒視窗中點擊來抽卡和每日優惠券。<br>你可以前往聊天室，和抽過的卡友聊聊；<br>也可以前往優惠券列表，去附近商家使用你的優惠券！",
     target: "help-icon",
+    fixedElement: true,
     placement: "bottom",
-    arrowOffset: 180,
-    xOffset: -180,
+    arrowOffset: 120,
+    xOffset: -160,
     yOffset: 250,
-    // delay: 700,
     onNext: function(){
     	$('#remindModal').modal('hide');
     }
@@ -182,8 +182,8 @@ function startTour(){
 		tour2.steps[3].xOffset = 50;
 		tour2.steps[3].arrowOffset = 0;
 		tour2.steps[3].onNext = undefined;
-		tour2.steps[2].xOffset = 300;
-		tour2.steps[2].yOffset = 300;
+		tour2.steps[2].xOffset = $(window).width()/2-$('#help-icon').offset().left-140;
+		tour2.steps[2].yOffset = $(window).height()/2-60;
 		if (prev_js != "../js/menuPage.js") {
 			tour2.steps.splice(2,1);
 		}
@@ -191,9 +191,11 @@ function startTour(){
 	}
 	else {
 		var tour1 = $.extend(true, {}, tour);
+		tour1.steps[2].yOffset = $(window).height()*0.4;
 		if (prev_js != "../js/menuPage.js") {
 			tour1.steps.splice(2,1);			
 		}
+
 		hopscotch.startTour(tour1);
 	}
 }

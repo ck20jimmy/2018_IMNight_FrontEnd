@@ -20,6 +20,12 @@ body {
 	color: #7d4d4d !important;
 }
 
+#center-point {
+	position: fixed;
+	left: 50vw;
+	top: 50vh;
+}
+
 #nav-btn:hover,
 #help-icon:hover {
 	cursor: pointer;
