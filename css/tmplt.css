@@ -12,6 +12,14 @@ body {
 	color: #272727;
 }
 
+.new-title-color {
+	color: #3e282d !important;
+}
+
+.new-context-color {
+	color: #7d4d4d !important;
+}
+
 #nav-btn:hover,
 #help-icon:hover {
 	cursor: pointer;

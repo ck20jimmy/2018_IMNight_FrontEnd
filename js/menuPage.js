@@ -104,7 +104,7 @@ function getDrawn() {
 			
 
 			// if the user hasn't seen tour yet, start the tour!
-			if (data.is_read_tutorial) {
+			if (!data.is_read_tutorial) {
 				startTour();
 			}
 			else  {
