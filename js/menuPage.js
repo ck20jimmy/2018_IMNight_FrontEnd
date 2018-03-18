@@ -101,11 +101,14 @@ function getDrawn() {
 			// remind_modal.takenDiscount = false;
 
 			$('#loginModal').remove();
-			$('#remindModal').modal('toggle');
+			
 
 			// if the user hasn't seen tour yet, start the tour!
-			if (!data.is_read_tutorial) {
+			if (data.is_read_tutorial) {
 				startTour();
+			}
+			else  {
+				$('#remindModal').modal('toggle');
 			}
 		}
 	});	

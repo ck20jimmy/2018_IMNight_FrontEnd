@@ -22,15 +22,20 @@ steps: [
     target: "nav-btn",
     placement: "bottom",
     fixedElement: true,
-    xOffset: 20
+    xOffset: 20,
+    // onNext: function(){
+    // 	$('#remindModal').modal('show');
+    // }
   },
   {
     title: "天天抽卡、抽優惠券吧",
     content: "在提醒視窗中點擊來抽卡和每日優惠券。<br>你可以前往聊天室，和抽過的卡友聊聊；<br>也可以前往優惠券列表，去附近商家使用你的優惠券！",
-    target: "remind-body",
+    target: "help-icon",
     placement: "bottom",
-    xOffset: 50,
-    yOffset: -30,
+    arrowOffset: 180,
+    xOffset: -180,
+    yOffset: 250,
+    // delay: 700,
     onNext: function(){
     	$('#remindModal').modal('hide');
     }
@@ -172,21 +177,24 @@ function gainPoints(points) {
 
 function startTour(){
 	if ($(window).width() > 992) {
-		tour.steps[3].target = "nav-people";
-		tour.steps[3].xOffset = 50;
-		tour.steps[3].arrowOffset = 0;
-		tour.steps[3].onNext = undefined;
-	}
-	else {
-
-	}
-	if (prev_js != "../js/menuPage.js") {
 		var tour2 = $.extend(true, {}, tour);
-		tour2.steps.splice(2,1);
+		tour2.steps[3].target = "nav-people";
+		tour2.steps[3].xOffset = 50;
+		tour2.steps[3].arrowOffset = 0;
+		tour2.steps[3].onNext = undefined;
+		tour2.steps[2].xOffset = 300;
+		tour2.steps[2].yOffset = 300;
+		if (prev_js != "../js/menuPage.js") {
+			tour2.steps.splice(2,1);
+		}
 		hopscotch.startTour(tour2);
 	}
 	else {
-		hopscotch.startTour(tour);
+		var tour1 = $.extend(true, {}, tour);
+		if (prev_js != "../js/menuPage.js") {
+			tour1.steps.splice(2,1);			
+		}
+		hopscotch.startTour(tour1);
 	}
 }
 
