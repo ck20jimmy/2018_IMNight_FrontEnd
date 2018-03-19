@@ -7,6 +7,8 @@ var resource = new Vue({
     methods: {
         crack: function(k) {
             /* need to add 1 point*/
+			gainPoints(20);
+			
             k = String(k);
 			var label = $('#task'+k).html();
             $('#egg' + k).addClass('hide');
@@ -16,7 +18,8 @@ var resource = new Vue({
 
             $('#eggUp' + k).removeClass('hide');
             $('#eggUp' + k).addClass('upAnimate');
-
+		},
+		taskFinish: function(k){
             $.ajax({
 				type: 'POST',
 				url: 'https://imnight2018backend.ntu.im/lottery/finish/',
@@ -37,8 +40,33 @@ var resource = new Vue({
 					alert("fail POST" + data);
 				}
 			});
+			this.crack(k);
         },
+		eggStatus: function(taskId,storyId){
+			$.ajax({
+				url: 'https://imnight2018backend.ntu.im/lottery/tasks/',
+				type: 'GET',
+				xhrFields: {
+					withCredentials: true
+				},
+				success: function(data) {
+					console.log(data[0]);
+					console.log(data[1].states);
+					for(var i = 0;i < data[0].length; i++){
+						if(data[0][i].id == taskId){
+							if(data[1].states[i] == true){
+								resource.crack(storyId);
+							}
+						}
+					}
+				},
+				error: function(data) {
+					alert("fail get egg status");
+				}
+			});
+		},
 		showStory: function(label,id){
+			var story = -1;
 			$.ajax({
 				url: 'https://imnight2018backend.ntu.im/sky/article/'+String(label)+'/',
 				type: 'GET',
@@ -46,10 +74,11 @@ var resource = new Vue({
 					withCredentials: true
 				},
 				success: function(data) {
-					//console.log(data);
+					console.log(data);
 					$('#task'+id).html(data[0].task.label);
 					$('#content'+id).html(data[0].content);
-					//$('#detail'+id).html(data[0].detail);
+					story = data[0].task.id;
+					resource.eggStatus(story,id);
 				},
 				error: function(data) {
 					alert("fail showCourse" + data);
@@ -58,17 +87,6 @@ var resource = new Vue({
 		}
     }
 })
-
-// $(function() {
-//     $('.lazy').Lazy({
-//         effect: 'fadeIn',
-//         effectTime: 1000,
-//         threshold: 0,
-//         onError: function(element) {
-//             console.log('error loading ' + element.data('src'));
-//         }
-//     });
-// })
 
 $(function() {
     $.ajax({
@@ -89,23 +107,13 @@ $(function() {
 					resource.stories.push(data[i]);
 				}
 			}
-
-			// console.log(resource.stories);
-			
-		    // $('.lazy').Lazy({
-		    //     effect: 'fadeIn',
-		    //     effectTime: 1000,
-		    //     threshold: 0,
-		    //     onError: function(element) {
-		    //         console.log('error loading ' + element.data('src'));
-		    //     }
-		    // });
         },
         error: function(data) {
-            alert("fail" + data);
+            alert("fail get article");
         }
     });
 });
+
 
 function showMoreStory(){
     $.ajax({
