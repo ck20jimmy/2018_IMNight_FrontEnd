@@ -559,3 +559,12 @@
   transform: translateY(-9px);
   cursor:pointer;
 }
+
+.storelink{
+    color: #7700BB !important;
+}
+/* mouse over link */
+.storelink:hover{
+    color: #7700BB !important;
+	text-decoration:none !important;
+}
