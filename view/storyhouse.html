@@ -56,7 +56,7 @@
 						</div>
 						<div class="modal-body">
 							<p :id ="'content'+e.id">content</p>
-							<center v-on:click="taskFinish(e.id)">
+							<center v-on:click="taskFinish(e.id,e.label)">
 								<img v-bind="{id: 'egg'+e.id}" class="egg" src="../img/egg.png">
 							</center>
 							<center>
