@@ -53,7 +53,7 @@
                             <div class="modal-body">
                                 <img :data-src="e.img" class="lazy logo">
                                 <p class="textBreak" :id ="'content'+e.id">content</p>
-                                <center v-on:click="taskFinish(e.id,e.label)">
+                                <center v-on:click="taskFinish(e.id)">
 									<img v-bind="{id: 'egg'+e.id}" class="egg" src="../img/egg.png">
 								</center>
 								<center>
