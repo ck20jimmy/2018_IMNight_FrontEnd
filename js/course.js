@@ -7,9 +7,7 @@ var resource = new Vue({
     },
     methods: {
         crack: function(k) {
-			/* need to add 1 point*/
-			gainPoints(20);
-			
+				
             k = String(k);
             $('#egg' + k).addClass('hide');
 
@@ -19,7 +17,11 @@ var resource = new Vue({
             $('#eggUp' + k).removeClass('hide');
             $('#eggUp' + k).addClass('upAnimate');
 		},
-		taskFinish: function(k,label){
+		taskFinish: function(k){
+			/* need to add 1 point*/
+			gainPoints(20);
+			
+			var label = document.getElementById("task"+k).innerHTML; 
 			$.ajax({
 				type: 'POST',
 				url: 'https://imnight2018backend.ntu.im/lottery/finish/',
@@ -37,27 +39,22 @@ var resource = new Vue({
 					console.log("label: "+label);
 				},
 				error: function(data) {
-					alert("fail POST" + data);
+					alert("fail POST task");
 				}
 			});
 			this.crack(k);
         },
-		eggStatus: function(taskId,courseID){
+		eggStatus: function(taskLabel,courseID){
 			$.ajax({
-				url: 'https://imnight2018backend.ntu.im/lottery/tasks/',
+				url: 'https://imnight2018backend.ntu.im/lottery/check/'+taskLabel+'/',
 				type: 'GET',
 				xhrFields: {
 					withCredentials: true
 				},
 				success: function(data) {
-					console.log(data[0]);
-					//console.log(data[1].states);
-					for(var i = 0;i < data[0].length; i++){
-						if(data[0][i].id == taskId){
-							if(data[1].states[i] == true){
-								resource.crack(courseID);
-							}
-						}
+					console.log(data.is_task_available);
+					if(data.is_task_available == false){
+						resource.crack(courseID);
 					}
 				},
 				error: function(data) {
@@ -76,8 +73,8 @@ var resource = new Vue({
 				success: function(data) {
 					console.log(data);
 					document.getElementById("content"+id).innerHTML = String(data[0].content);
-					document.getElementById("task"+id).innerHTML = String(data[0].task);
-					course = data[0].task;
+					document.getElementById("task"+id).innerHTML = String(data[0].task.label);
+					course = data[0].task.label;
 					resource.eggStatus(course,Number(id));
 				},
 				error: function(data) {

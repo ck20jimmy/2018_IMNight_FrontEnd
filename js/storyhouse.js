@@ -8,7 +8,6 @@ var resource = new Vue({
     methods: {
         crack: function(k) {
             /* need to add 1 point*/
-			gainPoints(20);
 			
             k = String(k);
             $('#egg' + k).addClass('hide');
@@ -19,7 +18,10 @@ var resource = new Vue({
             $('#eggUp' + k).removeClass('hide');
             $('#eggUp' + k).addClass('upAnimate');
 		},
-		taskFinish: function(k,label){
+		taskFinish: function(k){
+			gainPoints(20);
+			var label = document.getElementById("task"+k).innerHTML;
+			console.log("label:"+label);
             $.ajax({
 				type: 'POST',
 				url: 'https://imnight2018backend.ntu.im/lottery/finish/',
@@ -42,22 +44,17 @@ var resource = new Vue({
 			});
 			this.crack(k);
         },
-		eggStatus: function(taskId,storyId){
+		eggStatus: function(taskLabel,storyId){
 			$.ajax({
-				url: 'https://imnight2018backend.ntu.im/lottery/tasks/',
+				url: 'https://imnight2018backend.ntu.im/lottery/check/'+taskLabel+'/',
 				type: 'GET',
 				xhrFields: {
 					withCredentials: true
 				},
 				success: function(data) {
-					//console.log(data[0]);
-					//console.log(data[1].states);
-					for(var i = 0;i < data[0].length; i++){
-						if(data[0][i].id == taskId){
-							if(data[1].states[i] == true){
-								resource.crack(storyId);
-							}
-						}
+					console.log(data.is_task_available);
+					if(data.is_task_available == false){
+						resource.crack(storyId);
 					}
 				},
 				error: function(data) {
@@ -66,6 +63,7 @@ var resource = new Vue({
 			});
 		},
 		showStory: function(label,id){
+			//console.log(data);
 			var story = -1;
 			$.ajax({
 				url: 'https://imnight2018backend.ntu.im/sky/article/'+String(label)+'/',
@@ -77,7 +75,7 @@ var resource = new Vue({
 					console.log(data);
 					$('#task'+id).html(data[0].task.label);
 					$('#content'+id).html(data[0].content);
-					story = data[0].task.id;
+					story = data[0].task.label;
 					resource.eggStatus(story,id);
 				},
 				error: function(data) {
