@@ -148,8 +148,8 @@ function draw_card() {
             withCredentials: true
         },
         success: function(result) {
-			console.log('draw card result:');
-			console.log(result);
+			// console.log('draw card result:');
+			// console.log(result);
 			card.title = result[0].performer.profile.job;
 			card.name = result[0].performer.username;
 			card.label = result[0].label;
@@ -174,7 +174,7 @@ function draw_coupon() {
         success: function(result) {
 			// console.log('draw coupon result:');
 			// console.log(result);
-			coupon.name = result[0].vocher.title;
+			coupon.name = result[0].vocher.store.title;
 			coupon.content = result[0].vocher.description;
 			coupon.img = result[0].vocher.img;
 			var deadlineText = result[0].vocher.due_time.substring(0,10);
