@@ -22,6 +22,7 @@ var resource = new Vue({
 			gainPoints(20);
 			
 			var label = document.getElementById("task"+k).innerHTML; 
+			console.log("label+"+label);
 			$.ajax({
 				type: 'POST',
 				url: 'https://imnight2018backend.ntu.im/lottery/finish/',

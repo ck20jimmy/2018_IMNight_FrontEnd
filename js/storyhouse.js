@@ -63,7 +63,6 @@ var resource = new Vue({
 			});
 		},
 		showStory: function(label,id){
-			//console.log(data);
 			var story = -1;
 			$.ajax({
 				url: 'https://imnight2018backend.ntu.im/sky/article/'+String(label)+'/',
