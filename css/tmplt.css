@@ -1,14 +1,19 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+
+b, p, div {
+	font-family:'Noto Sans TC', sans-serif, "微軟正黑體", "Microsoft JhengHei","細明體", "MingLiU", serif;	
+}
+
 body {
     background: #fff url('../img/bac_2.jpg') center center fixed no-repeat;
     -moz-background-size: cover;
     background-size: cover;
-	/* z-index: -1; */
-	animation: bgFadeIn 1.0s;	
+	animation: bgFadeIn 1.0s;
 }
 
 .jh {
-	font-weight: 900;
-	font-family: "微軟正黑體", "Microsoft JhengHei","細明體", "MingLiU", "標楷體", "DFKai-sb", serif;
+	font-weight: 700;
+	font-family:'Noto Sans TC', sans-serif, "微軟正黑體", "Microsoft JhengHei","細明體", "MingLiU", serif;
 	color: #272727;
 }
 
@@ -33,14 +38,8 @@ body {
 }
 
 #nav-btn {
-	/* position: fixed; */
-	/* z-index: 1050; */
 	width: 150px;
-	/* top: 2.3vh; */
-	/* left: 2vh  */
 }
-
-/* end */
 
 .content-wrapper{
 	min-height:calc(100vh - 56px);
@@ -49,39 +48,12 @@ body {
 	font-family: "微軟正黑體", "Microsoft JhengHei","細明體", "MingLiU", "標楷體", "DFKai-sb", serif !important;
 }
 
-/* .content-wrapper:before{
-	content:"";
-    position: absolute;
-    width: 100%;
-    height:100%;
-  	opacity:0.3;
-	top:0px;
-	background-image:url('../img/bgRed.jpg');
-	background-repeat:no-repeat;
-	background-position:center center;
-	background-attachment: fixed;
-	background-size: contain;
-	z-index: -1;
-	animation: bgFadeIn 1.0s;
-} */
-
 #content-background{
 	content:"";
     position: absolute;
     width: 100%;
     height:100%;
-  	/* opacity:0.3; */
 	top:0px;
-/* 	background-image:url('../img/bac_2.jpg');
-	background-repeat:no-repeat;
-	background-position:center center;
-	background-attachment: fixed;
-	background-size: contain; */
-    /* background: #fff url('../img/bac_2.jpg') center center fixed no-repeat; */
-    /* -moz-background-size: cover; */
-    /* background-size: cover; */
-	/* z-index: -1; */
-	/* animation: bgFadeIn 1.0s; */
 }
 
 .main-content{
@@ -94,10 +66,6 @@ nav{
 	animation: slidein-left 2.0s;
 }
 
-#mainNav{
-	/* font-family: "微軟正黑體", "Microsoft JhengHei","細明體", "MingLiU", "標楷體", "DFKai-sb", serif !important; */
-}
-
 #mainNav .navbar-collapse{
 	overflow:auto;
 	max-height:75vh
@@ -105,15 +73,6 @@ nav{
 #mainNav .navbar-collapse .navbar-nav .nav-item .nav-link{
 	cursor:pointer
 }
-/* #mainNav .navbar-collapse .navbar-sidenav .nav-link-collapse:after{
-	float:right;
-	content:'\f107';
-	font-family: "微軟正黑體", "Microsoft JhengHei","細明體", "MingLiU", "標楷體", "DFKai-sb", serif !important;
-	text-rendering: optimizeLegibility;
-} */
-/* #mainNav .navbar-collapse .navbar-sidenav .nav-link-collapse.collapsed:after{
-	content:'\f105'
-} */
 #mainNav .navbar-collapse .navbar-sidenav .sidenav-second-level{
 	padding-left:0
 }
