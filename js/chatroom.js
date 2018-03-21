@@ -110,7 +110,7 @@ function load_history(label,uname){
         },
         success: function(data) {
             chat_data = data ;
-            console.log(data);
+            let scroll_num = 0;
             for( i = 0 ; i < chat_data.length ; i++){
                 let r = $("<div></div>");
                 r.addClass("row");
@@ -122,8 +122,6 @@ function load_history(label,uname){
                 time.addClass("message-time col-xs-6")
 
                 let m = $("<div></div>");
-
-                console.log(chat_data[i].handle.username)
 
                 //user message is on the right side
                 if( chat_data[i].handle.username != uname ){
@@ -146,7 +144,10 @@ function load_history(label,uname){
                 }
                 
                 $('#chatcontent').append(r);
+                scroll_num += r.height();
             }
+
+            $("#chatcontent").scrollTop( scroll_num );
 
         },
         error: function() {
