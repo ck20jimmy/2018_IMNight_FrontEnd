@@ -37,7 +37,7 @@ function jumpPage(page, label="", uname="") {
 	$(".modal-backdrop.fade.show").remove();
 	setTimeout(function(){
 		if (page == "chatroom") {
-			console.log(label);
+			// console.log(label);
 			loadPage('chatroom', function(){
 				select_performer( label, uname );
 			});

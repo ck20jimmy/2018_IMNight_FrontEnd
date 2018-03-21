@@ -10,10 +10,11 @@ steps: [
     arrowOffset: 150,
     xOffset: -150,
     onShow: function(){
-    	setTimeout(function(){
-    		$('#remind-close').attr('disabled', true);
-    	}, 1000);
-    	$('#remindModal').modal('show');
+    	// setTimeout(function(){
+    	// 	$('#remind-close').attr('disabled', true);
+    	// }, 1000);
+    	// $('#remindModal').modal('show');
+    	$('#remindModal').modal('hide');
     }
   },
   {
@@ -23,9 +24,13 @@ steps: [
     placement: "bottom",
     fixedElement: true,
     xOffset: 20,
-    // onNext: function(){
-    // 	$('#remindModal').modal('show');
-    // }
+    onNext: function(){
+    	// $('#remindModal').modal('show');
+    	setTimeout(function(){
+    		$('#remind-close').attr('disabled', true);
+    	}, 1000);
+    	$('#remindModal').modal('show');
+    }
   },
   {
     title: "天天抽卡、抽優惠券吧",
@@ -183,7 +188,7 @@ function startTour(){
 		tour2.steps[3].arrowOffset = 0;
 		tour2.steps[3].onNext = undefined;
 		tour2.steps[2].xOffset = $(window).width()/2-$('#help-icon').offset().left-140;
-		tour2.steps[2].yOffset = $(window).height()/2-60;
+		tour2.steps[2].yOffset = $(window).height()/2-100;
 		if (prev_js != "../js/menuPage.js") {
 			tour2.steps.splice(2,1);
 		}
@@ -191,13 +196,14 @@ function startTour(){
 	}
 	else {
 		var tour1 = $.extend(true, {}, tour);
-		tour1.steps[2].yOffset = $(window).height()*0.4;
+		tour1.steps[2].yOffset = $(window).height()*0.3;
 		if (prev_js != "../js/menuPage.js") {
-			tour1.steps.splice(2,1);			
+			tour1.steps.splice(2,1);	
 		}
 
 		hopscotch.startTour(tour1);
 	}
+	hopscotch.showStep(0);
 }
 
 $(document).click( function (event){
