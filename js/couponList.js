@@ -75,6 +75,23 @@ var resource = new Vue({
 				}
 			});
 		},
+		updateVocher: function(k){
+			//coupons:delete this vocher (this will change usableVocher simultaniously)
+			for(var i = 0; i < resource.coupons.length; i++){
+				if(resource.coupons[i].vocher.id == k){
+					resource.coupons.splice(i,1);
+					break;
+				}
+			}
+
+			//all:change this vocher to usable = false
+			for(var i = 0; i < resource.allVocher.length; i++){
+				if(resource.allVocher[i].vocher.id == k){
+					resource.allVocher[i].usable = false;
+					break;
+				}
+			}
+		},
 		submit: function(k,label) {
 			$.ajax({
 				type: 'POST',
@@ -90,16 +107,18 @@ var resource = new Vue({
 					request.setRequestHeader("X-CSRFTOKEN", csrftoken);
 				},
 				success: function(data) {
-					//console.log("label: "+label);
 				},
 				error: function(data) {
 					alert("fail POST" + data);
 				}
 			});
+			
+			this.updateVocher(k);
             this.dcheck(k);
-			this.getAllVocher();
-			this.getUserVocher();
-        },
+			$('.modal').modal('toggle');
+			$(".modal-backdrop.fade.show").remove();
+				
+		   },
     }
 })
 
@@ -139,7 +158,6 @@ function updateUsable(){
 function showMoreVocher(){
 	var vocherSize = resource.coupons.length;
 	var allSize = resource.allVocher.length;
-	//console.log(vocherSize,allSize,allSize-vocherSize);
 	if((allSize - vocherSize) > 4){
 		for(var i = vocherSize; i < vocherSize+4; i++){
 			resource.coupons.push(resource.allVocher[i]);

@@ -32,11 +32,6 @@
                         <h4 class="card-title"><b>{{e.name}}</b></h4>
                         <h6 class="card-subtitle"><span><img class="lazy" data-src = "../img/manager.png"></span>{{e.teacher}}</h6>
                     </div>
-					<!--back
-                    <div class="box transform" v-bind="{id: 'back'+e.id}">
-						<h5 :id = "'des'+e.id">here</h5>
-						<img class = "moreBtn" data-toggle="modal" :data-target="'#exampleModal'+e.id" src = "../img/play-button.png">
-                    </div>-->
 				</div>
 					
 				<center>
@@ -54,20 +49,20 @@
 								<span aria-hidden="true">&times;</span>
 							</button>
                         </div>
-                        <center>
+                        <div>
                             <div class="modal-body">
                                 <img :data-src="e.img" class="lazy logo">
                                 <p class="textBreak" :id ="'content'+e.id">content</p>
-                                <div v-on:click="crack(e.id)">
+                                <center v-on:click="taskFinish(e.id)">
 									<img v-bind="{id: 'egg'+e.id}" class="egg" src="../img/egg.png">
-								</div>
+								</center>
 								<center>
 									<img v-bind="{id: 'eggUp'+e.id}" class="eggup hide" src="../img/egg_up.png">
 									<img v-bind="{id: 'eggDown'+e.id}" class="eggdown hide" src="../img/egg_down.png">
 								</center>
 								<template :id = "'task'+e.id"></template>
                             </div>
-                        </center>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -33,7 +33,7 @@ $(document).ready(function(){
 	});
 
     $.ajax({
-        url: 'https://imnight2018backend.ntu.im/earth/list/store/',
+        url: 'https://imnight2018backend.ntu.im/earth/list/store',
         type: 'GET',
         xhrFields: {
             withCredentials: true
