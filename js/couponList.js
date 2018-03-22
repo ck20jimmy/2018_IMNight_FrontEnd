@@ -44,7 +44,7 @@ var resource = new Vue({
 					}
 				},
 				error: function(data) {
-					alert("fail getAllVocher");
+					// alert("fail getAllVocher");
 				}
 			});
 		},
@@ -71,7 +71,7 @@ var resource = new Vue({
 					}
 				},
 				error: function(data) {
-					alert("fail getUserVocher");
+					// alert("fail getUserVocher");
 				}
 			});
 		},
@@ -109,7 +109,7 @@ var resource = new Vue({
 				success: function(data) {
 				},
 				error: function(data) {
-					alert("fail POST" + data);
+					// alert("fail POST" + data);
 				}
 			});
 			

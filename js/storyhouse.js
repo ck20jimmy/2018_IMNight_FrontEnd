@@ -39,7 +39,7 @@ var resource = new Vue({
 					console.log("label: "+label);
 				},
 				error: function(data) {
-					alert("fail POST" + data);
+					// alert("fail POST" + data);
 				}
 			});
 			this.crack(k);
@@ -58,7 +58,7 @@ var resource = new Vue({
 					}
 				},
 				error: function(data) {
-					alert("fail get egg status");
+					// alert("fail get egg status");
 				}
 			});
 		},
@@ -78,7 +78,7 @@ var resource = new Vue({
 					resource.eggStatus(story,id);
 				},
 				error: function(data) {
-					alert("fail showCourse");
+					// alert("fail showCourse");
 				}
 			});
 		}
@@ -110,7 +110,7 @@ $(function() {
 			}
         },
         error: function(data) {
-            alert("fail get article");
+            // alert("fail get article");
         }
     });
 });

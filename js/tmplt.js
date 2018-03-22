@@ -140,7 +140,7 @@ function loadPage(page,callback){
 
 			  })
 			  .fail(function( jqxhr, settings, exception ) {
-			    alert('Failed to load script');
+			    // alert('Failed to load script');
 			});
 
 		});

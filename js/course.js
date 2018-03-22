@@ -40,7 +40,7 @@ var resource = new Vue({
 					console.log("label: "+label);
 				},
 				error: function(data) {
-					alert("fail POST task");
+					// alert("fail POST task");
 				}
 			});
 			this.crack(k);
@@ -59,7 +59,7 @@ var resource = new Vue({
 					}
 				},
 				error: function(data) {
-					alert("fail get egg status");
+					// alert("fail get egg status");
 				}
 			});
 		},
@@ -79,7 +79,7 @@ var resource = new Vue({
 					resource.eggStatus(course,Number(id));
 				},
 				error: function(data) {
-					alert("fail showCourse");
+					// alert("fail showCourse");
 				}
 			});
 		},
@@ -123,7 +123,7 @@ $(function() {
 			});	
         },
         error: function(data) {
-            alert("fail" + data);
+            // alert("fail" + data);
         }
     });
 });

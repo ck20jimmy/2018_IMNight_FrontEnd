@@ -132,7 +132,7 @@ function is_login_init() {
 			user_status.point = result.profile.point;
 		},
 		error: function() {
-			alert('get user info fail');
+			// alert('get user info fail');
 		}
 	});
 
@@ -234,7 +234,7 @@ $(function(){
 			}
 		},
 		error: function() {
-			alert('get login status fail!');
+			// alert('get login status fail!');
 		}
 	});
 

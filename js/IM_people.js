@@ -18,7 +18,7 @@ $(document).ready( function(){
         	// console.log(data);
 		},
 		error: function() {
-			alert('get IM_People fail!');
+			// alert('get IM_People fail!');
 		}
 	});
 });

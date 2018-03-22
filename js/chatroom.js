@@ -19,7 +19,7 @@ $(document).ready(function(){
             chatlist._data.people = data ;
 		},
 		error: function() {
-			alert('get get performer-list fail!');
+			// alert('get get performer-list fail!');
 		}
 	});
 
@@ -151,7 +151,7 @@ function load_history(label,uname){
 
         },
         error: function() {
-            alert('get get performer-list fail!');
+            // alert('get get performer-list fail!');
         }
     });
 
