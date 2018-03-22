@@ -165,17 +165,6 @@ $(document).click( function (event){
     }
 })
 
-$( function(){
-	$('.lazy').Lazy({
-		effect: 'fadeIn',
-		effectTime: 1000,
-		threshold: 0,
-        onError: function(element) {
-            console.log('error loading ' + element.data('src'));
-        }
-	});	
-})
-
 $("#people-list").on("show.bs.collapse hide.bs.collapse", function(){
     let angle = $("#show_list").find('svg');
     if( angle.hasClass("angle-up") ){

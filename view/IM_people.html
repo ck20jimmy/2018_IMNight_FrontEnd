@@ -21,13 +21,13 @@
 				</div>		
 			</div>
 			
-			<div class="row" id="IM_people">
+			<div class="row justify-content-center pt-3" id="IM_people">
 				<template v-for="person in people">
 					<div class="col-lg-3 text-center person" data-toggle="modal" data-target="#{{$index}}-Modal">
 						<!-- data-src => src -->
-						<img src="{{ person.performer.profile.img }}" class="rounded-circle img-fluid d-block mx-auton lazy">
+						<img src="{{ person.performer.profile.img }}" class="rounded-circle img-fluid d-block mx-auto p-3 ">
 						<b><h4>{{ person.performer.profile.job }}</h4></b>
-						<b><h4>{{ person.performer.username }}</h4></b>
+						<b><h5 class="new-context-color">{{ person.performer.username }}</h4></b>
 					</div>
 					<!-- Modal -->
 					<div class="modal fade" id="{{ $index }}-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

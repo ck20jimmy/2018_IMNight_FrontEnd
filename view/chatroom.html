@@ -19,11 +19,11 @@
 			</div>
 
 			<div id="list">
-			    <div id="people-list" class="collapse" aria-labelledby="headingOne" data-parent="#list">
-			      	<div id="list-content" class="row">
-			        	<div id="{{ person.label }}" class="col-sm-1 col-xs-1 list-item text-center" v-for="person in people" onclick="select_performer(this.id,'{{ person.performer.last_name }}'+'{{ person.performer.first_name }}','{{ person.performer.username }}')">
-							<img src="{{ person.performer.profile.img }}" class="rounded-circle img-fluid d-block mx-auton lazy">
-							<h6 class="title">{{ person.performer.last_name }}{{ person.performer.first_name }}</h6>
+			    <div id="people-list" class="collapse show" aria-labelledby="headingOne" data-parent="#list">
+			      	<div id="list-content">
+			        	<div id="{{ person.label }}" class="list-item text-center px-1 d-inline-block" v-for="person in people" onclick="select_performer(this.id,'{{ person.performer.username }}')">
+							<img src="{{ person.performer.profile.img }}" class="rounded-circle img-fluid d-block mx-auton" style="width: 80%; margin: auto">
+							<h6 class="title">{{ person.performer.username }}</h6>
 						</div>
 			      	</div>
 			    </div>
@@ -41,10 +41,9 @@
 					<div class="col-sm-12">
 						<div class="text-center subtitle">
 							<br>
-							welcome<br> 
+							Welcome<br> 
 							to the<br> 
-							chatroom<br> 
-							!!!
+							chatroom!<br> 
 						</div>					
 					</div>
 				</div>

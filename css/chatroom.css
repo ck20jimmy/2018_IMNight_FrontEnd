@@ -37,7 +37,9 @@
 #list-content{
 	max-height: 120px;
 	width: 100%;
-	overflow: auto;
+	overflow-x: auto;
+	overflow-y: hidden;
+	white-space: nowrap;
 }
 
 .title{
@@ -57,7 +59,7 @@
 .list-item{
 	/* max-width: 20vw; */
 	/* max-height: 20vw; */
-	width: 20vw;
+	width: 80px;
 	margin: 1.5%;
 }
 

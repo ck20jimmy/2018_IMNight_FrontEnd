@@ -30,7 +30,7 @@
 					
 					<div class="cb" :id="'cb'+e.id">
                         <h4 class="card-title"><b>{{e.name}}</b></h4>
-                        <h6 class="card-subtitle"><span><img class="lazy" data-src = "../img/manager.png"></span>{{e.teacher}}</h6>
+                        <h6 class="card-subtitle"><span><img src = "../img/manager.png"></span>{{e.teacher}}</h6>
                     </div>
 				</div>
 					
@@ -51,8 +51,8 @@
                         </div>
                         <div>
                             <div class="modal-body">
-                                <img :data-src="e.img" class="lazy logo">
-                                <p class="textBreak" :id ="'content'+e.id">content</p>
+                                <img :src="e.img" class="logo">
+                                <p class="textBreak my-2" :id ="'content'+e.id">content</p>
                                 <center v-on:click="taskFinish(e.id)">
 									<img v-bind="{id: 'egg'+e.id}" class="egg" src="../img/egg.png">
 								</center>
