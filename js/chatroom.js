@@ -7,6 +7,7 @@ var chatlist = new Vue({
 
 var current_label = "" ;
 var chatsock = null ;
+var chat_content_text_height = 0;
 
 $(document).ready(function(){
 	$.ajax({
@@ -82,6 +83,9 @@ function select_performer( label, uname ){
         }
         
         $('#chatcontent').append(r);
+        chat_content_text_height += r.height();
+        $("#chatcontent").scrollTop( chat_content_text_height );
+
 	};
 
     $("#chatform").on("submit", function(event) {
@@ -94,6 +98,7 @@ function select_performer( label, uname ){
         }
         chatsock.send(JSON.stringify(message));
         $("#user_input").val('').focus();
+
         return false;
     });
 
@@ -110,7 +115,7 @@ function load_history(label,uname){
         },
         success: function(data) {
             chat_data = data ;
-            let scroll_num = 0;
+            chat_content_text_height = 0;
             for( i = 0 ; i < chat_data.length ; i++){
                 let r = $("<div></div>");
                 r.addClass("row");
@@ -144,10 +149,10 @@ function load_history(label,uname){
                 }
                 
                 $('#chatcontent').append(r);
-                scroll_num += r.height();
+                chat_content_text_height += r.height();
             }
 
-            $("#chatcontent").scrollTop( scroll_num );
+            $("#chatcontent").scrollTop( chat_content_text_height );
 
         },
         error: function() {
