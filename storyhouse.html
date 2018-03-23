@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1, maximum-scale = 1" />
+    <title>IM 故事館</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- custom CSS-->
+    <link href="css/storyhouse.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="mainContext">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <!-- <div class="titles"> -->
+                <h1 class="titles"><b class="new-title-color">IM 故事館</b></h1>
+                <!-- </div> -->
+                <h6 class="subtitles new-context-color">收藏著人們的故事</h6>
+            </div>
+        </div>
+
+        <!-- story in each card-->
+		<div class="row mt-3">
+			<div class="test" v-for="e in stories">
+				<div class="card box-shadow hvr-bob" data-toggle="modal" :data-target="'#modal'+e.id" @click = "showStory(e.label,e.id)" :style = "{ 'background-image' : 'url(\'' + e.img + '\')' }">
+					<!--<img class="card-img" :src ="e.img">-->
+				</div>
+
+				<div class="triangle">
+				</div>
+				<div class="tag">
+					<h4 class="card-title"><b>{{e.title}}</b></h4>
+				</div>
+			</div>
+			
+			<center>
+				<button v-if = "storyMorethanFour" type="button" class="btn btn-outline-danger" onclick = "showMoreStory()">更多故事</button>
+			</center>
+		</div>
+
+		<!-- modal -->
+		<div v-for="e in stories">
+			<div class="modal fade" :id="'modal'+e.id" tabindex="-1" role="dialog">
+				<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">{{e.title}}</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+						</div>
+						<div class="modal-body">
+							<p :id ="'content'+e.id">content</p>
+							<center v-on:click="taskFinish(e.id)">
+								<img v-bind="{id: 'egg'+e.id}" class="egg" src="../img/egg.png">
+							</center>
+							<center>
+								<img v-bind="{id: 'eggDown'+e.id}" class="eggdown hide" src="../img/egg_down.png">
+								<img v-bind="{id: 'eggUp'+e.id}" class="eggup hide" src="../img/egg_up.png">
+							</center>
+							<template :id = "'task'+e.id">store task label</template>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+
+    <!-- link for jquery and bootstrap -->
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+    <!-- vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <!-- custom js -->
+    <script src="js/storyhouse.js"></script>
+
+</body>
+
+</html>

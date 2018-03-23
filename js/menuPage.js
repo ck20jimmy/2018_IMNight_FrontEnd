@@ -210,8 +210,9 @@ $(function(){
         }
 	});
 
-	// initialize popover
+	// initialize popover and tooltip
 	$('[data-toggle="popover"]').popover({container: "body"});
+	$('[data-toggle="tooltip"]').tooltip({'placement': 'top'});
 
 	// check if the user has logged in
 	$.ajax({

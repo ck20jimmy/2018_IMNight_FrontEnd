@@ -107,10 +107,10 @@ var user_status = new Vue({
 let prev_js = "";
 let prev_css = "";
 function loadPage(page,callback){
-	script_name = "../js/"+page+".js";
-	css_name = "../css/"+page+".css";
+	script_name = "js/"+page+".js";
+	css_name = "css/"+page+".css";
 
-	if( ! (script_name == prev_js && css_name == prev_css) || prev_js == "../js/menuPage.js" ){
+	if( ! (script_name == prev_js && css_name == prev_css) || prev_js == "js/menuPage.js" ){
 		
 		//hide the nav bar
 		$(".sidenav-second-level").collapse('hide')
@@ -189,7 +189,7 @@ function startTour(){
 		tour2.steps[3].onNext = undefined;
 		tour2.steps[2].xOffset = $(window).width()/2-$('#help-icon').offset().left-140;
 		tour2.steps[2].yOffset = $(window).height()/2-100;
-		if (prev_js != "../js/menuPage.js") {
+		if (prev_js != "js/menuPage.js") {
 			tour2.steps.splice(2,1);
 		}
 		hopscotch.startTour(tour2);
@@ -197,7 +197,7 @@ function startTour(){
 	else {
 		var tour1 = $.extend(true, {}, tour);
 		tour1.steps[2].yOffset = $(window).height()*0.3;
-		if (prev_js != "../js/menuPage.js") {
+		if (prev_js != "js/menuPage.js") {
 			tour1.steps.splice(2,1);	
 		}
 

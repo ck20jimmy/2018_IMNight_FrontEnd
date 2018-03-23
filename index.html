@@ -5,9 +5,9 @@
 	<meta name = "viewport" content = "width = device-width, initial-scale = 1, maximum-scale = 1" />
 
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<link rel="stylesheet" href="../css/tmplt.css">
-	<link rel="stylesheet" href="../css/hopscotch.min.css">
-	<link rel="stylesheet" href="../css/introjs.css">	
+	<link rel="stylesheet" href="css/tmplt.css">
+	<link rel="stylesheet" href="css/hopscotch.min.css">
+	<link rel="stylesheet" href="css/introjs.css">	
 
 	<title>2018 IM Night!</title>
 </head>
@@ -24,7 +24,7 @@
 
 	    <div class="collapse navbar-collapse" id="navbarResponsive">
 	      	<ul class="navbar-nav navbar-sidenav jh" id="exampleAccordion">
-		        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Sky">
+		        <li class="nav-item">
 		            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseSky" data-parent="#exampleAccordion">
 			            <span class="nav-link-text">天緣</span>
 			            <i class="fa fa-fw fa-angle-down float-right mt-1"></i>
@@ -38,7 +38,7 @@
 		          	</ul>
 		        </li>
 
-	        	<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Land">
+	        	<li class="nav-item">
 		            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseLand" data-parent="#exampleAccordion">
 			            <span class="nav-link-text">地緣</span>
 			            <i class="fa fa-fw fa-angle-down float-right mt-1"></i>
@@ -56,7 +56,7 @@
 		          	</ul>
 		        </li>
 				
-				<li class="nav-item" data-toggle="tooltip" data-placement="right" title="People" id="nav-people">
+				<li class="nav-item" id="nav-people">
 		            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapsePeople" data-parent="#exampleAccordion">
 			            <span class="nav-link-text">人緣</span>
 			            <i class="fa fa-fw fa-angle-down float-right mt-1"></i>
@@ -69,7 +69,8 @@
 			              	<a href="#" onclick="loadPage('chatroom')">聊天室</a>
 			            </li>
 			            <li v-if="loggedIn">
-			              	<a href="#" onclick="loadPage('show_intro')">表演介紹</a>
+			              	<!-- <a href="#" onclick="loadPage('show_intro')">表演介紹</a> -->
+			              	<a>表演介紹（即將推出）</a>
 			            </li>
 			            <li v-if="!loggedIn">
 			            	<a>請先登入以瀏覽</a>
@@ -121,20 +122,20 @@
 	<!-- for bootstrap -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	<!-- for ../js scripts -->
-	<script src="../js/vue.min.js"></script>
-	<script src="../js/tmplt.js"></script>
+	<!-- for js scripts -->
+	<script src="js/vue.min.js"></script>
+	<script src="js/tmplt.js"></script>
 	<!-- for font-awesome -->
-	<script src="../js/fontawesome-all.js"></script>
+	<script src="js/fontawesome-all.js"></script>
 	<!-- for lazy load -->
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.6/jquery.lazy.min.js"></script>
     <!-- for jscookie cdn -->
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 	<!-- for web socket -->
-	<script src="../js/reconnecting-websocket.min.js"></script>
+	<script src="js/reconnecting-websocket.min.js"></script>
 
-	<script src="../js/hopscotch.min.js"></script>
-	<script src="../js/intro.js"></script>	
+	<script src="js/hopscotch.min.js"></script>
+	<script src="js/intro.js"></script>	
 
 </body>
 </html>

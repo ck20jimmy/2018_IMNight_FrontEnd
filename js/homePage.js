@@ -23,7 +23,7 @@ $(function(){
 
 $('#start').on('click', function() {
     setTimeout(function(){
-        location.href = "template.html";
+        location.href = "index.html";
     }, 500);
 });    
 
