@@ -181,6 +181,10 @@ function gainPoints(points) {
 }
 
 function startTour(){
+	if (!user_status.loggedIn) {
+		return;
+	}
+
 	if ($(window).width() > 992) {
 		var tour2 = $.extend(true, {}, tour);
 		tour2.steps[3].target = "nav-people";

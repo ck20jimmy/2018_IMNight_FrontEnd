@@ -140,6 +140,16 @@ function is_login_init() {
 	getNews();
 }
 
+function not_login_init() {
+	$('#remindModal').remove();
+	$('#loginModal').modal('toggle');
+
+	$('.loginDeny').attr("onclick", null);
+	$('#help-icon').on('click', function(){
+		$('#loginModal').modal('show');
+	});
+}
+
 function draw_card() {
 	$.ajax({
 		type: 'GET',
@@ -230,8 +240,7 @@ $(function(){
 
 			// if the user hasn't logged in, remove remind modal
 			else {
-				$('#remindModal').remove();
-				$('#loginModal').modal('toggle');
+				not_login_init();
 			}
 		},
 		error: function() {
