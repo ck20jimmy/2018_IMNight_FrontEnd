@@ -57,11 +57,11 @@
 						<div class="modal-body">
 							<p :id ="'content'+e.id">content</p>
 							<center v-on:click="taskFinish(e.id)">
-								<img v-bind="{id: 'egg'+e.id}" class="egg" src="../img/egg.png">
+								<img v-bind="{id: 'egg'+e.id}" class="egg" src="img/egg.png">
 							</center>
 							<center>
-								<img v-bind="{id: 'eggDown'+e.id}" class="eggdown hide" src="../img/egg_down.png">
-								<img v-bind="{id: 'eggUp'+e.id}" class="eggup hide" src="../img/egg_up.png">
+								<img v-bind="{id: 'eggDown'+e.id}" class="eggdown hide" src="img/egg_down.png">
+								<img v-bind="{id: 'eggUp'+e.id}" class="eggup hide" src="img/egg_up.png">
 							</center>
 							<template :id = "'task'+e.id">store task label</template>
 						</div>

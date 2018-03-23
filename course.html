@@ -30,7 +30,7 @@
 					
 					<div class="cb" :id="'cb'+e.id">
                         <h4 class="card-title"><b>{{e.name}}</b></h4>
-                        <h6 class="card-subtitle"><span><img src = "../img/manager.png"></span>{{e.teacher}}</h6>
+                        <h6 class="card-subtitle"><span><img src = "img/manager.png"></span>{{e.teacher}}</h6>
                     </div>
 				</div>
 					
@@ -54,11 +54,11 @@
                                 <img :src="e.img" class="logo">
                                 <p class="textBreak my-2" :id ="'content'+e.id">content</p>
                                 <center v-on:click="taskFinish(e.id)">
-									<img v-bind="{id: 'egg'+e.id}" class="egg" src="../img/egg.png">
+									<img v-bind="{id: 'egg'+e.id}" class="egg" src="img/egg.png">
 								</center>
 								<center>
-									<img v-bind="{id: 'eggUp'+e.id}" class="eggup hide" src="../img/egg_up.png">
-									<img v-bind="{id: 'eggDown'+e.id}" class="eggdown hide" src="../img/egg_down.png">
+									<img v-bind="{id: 'eggUp'+e.id}" class="eggup hide" src="img/egg_up.png">
+									<img v-bind="{id: 'eggDown'+e.id}" class="eggdown hide" src="img/egg_down.png">
 								</center>
 								<template :id = "'task'+e.id"></template>
                             </div>
