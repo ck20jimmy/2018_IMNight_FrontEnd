@@ -241,10 +241,7 @@ $(function(){
 
 
 	$('#rule-title').fadeTo(1000, 0.85, 'swing', function() {
-		$('#rule-space').show("blind", 800, function() {
-			var h = $('body').height();
-			// $('#content-background').css('height', h);
-		});
+		$('#rule-space').show("blind", 800);
 	});
 
 	// add enlarge hover effect on all .floating elements
