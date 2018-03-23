@@ -191,7 +191,8 @@
 }
 
 .modal-body{
-	width:50%;
+	text-align: center;
+	width:100%;
 }
 
 /* vertical-align modal*/
@@ -215,7 +216,7 @@
 }
 
 .logo{
-	width:80%;
+	width:100%;
 	animation:drop 2s;
 }
 
