@@ -37,6 +37,11 @@ body {
 	color: #4e274a;
 }
 
+#help-icon {
+	border: none;
+	background: transparent;
+}
+
 #nav-btn {
 	width: 150px;
 }
@@ -165,7 +170,6 @@ nav{
 	#mainNav.navbar-light .navbar-collapse .navbar-sidenav li.active a:focus,#mainNav.navbar-light .navbar-collapse .navbar-sidenav li.active a:hover{
 		color:#000
 	}
-	
 }
 
 @keyframes bgFadeIn{
@@ -195,5 +199,8 @@ nav{
 @media screen and (min-width: 0px) and (max-width: 600px) {
 	#help-icon {
 		left: -10vw;
+	}
+	#mainNav {
+		background-color: rgba(248,249,250, 0.98) !important;
 	}
 }
