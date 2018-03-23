@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-116333274-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-116333274-1');
+	</script>
+
+	<meta charset="UTF-8">
+	<meta name = "viewport" content = "width = device-width, initial-scale = 1, maximum-scale = 1" />
+
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/home.css">
+	<link rel="stylesheet" href="css/hopscotch.min.css">
+
+	<title>2018 IM Night!</title>
+</head>
+<body>
+	<!-- <div class="jh h5" id="nav-btn" onclick="loadPage('menuPage')">2018 IM Night</div> -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav">
+	   	<div class="navbar-brand jh mr-0" id="nav-btn" onclick="loadPage('menuPage')">2018 IM Night</div>
+	   	<!-- <div class="navbar-brand"></div> -->
+	   	<i class="fas fa-2x fa-question-circle" id="help-icon"></i>
+	    <!-- <i class="fas fa-home" style="font-size: 1.6rem"></i> -->
+	    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" id="burger-toggler">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+
+	    <div class="collapse navbar-collapse" id="navbarResponsive">
+	      	<ul class="navbar-nav navbar-sidenav jh" id="exampleAccordion">
+		        <li class="nav-item">
+		            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseSky" data-parent="#exampleAccordion">
+			            <span class="nav-link-text">天緣</span>
+			            <i class="fa fa-fw fa-angle-down float-right mt-1"></i>
+		          	</a>
+
+		          	<ul class="sidenav-second-level collapse" id="collapseSky" data-parent="#exampleAccordion">
+			            <li>
+			              <a href="#" onclick="loadPage('storyhouse')">IM 故事館</a>
+			              <a href="#" onclick="loadPage('course')">課程與學習資源</a>
+			            </li>
+		          	</ul>
+		        </li>
+
+	        	<li class="nav-item">
+		            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseLand" data-parent="#exampleAccordion">
+			            <span class="nav-link-text">地緣</span>
+			            <i class="fa fa-fw fa-angle-down float-right mt-1"></i>
+		          	</a>
+		          	<ul class="sidenav-second-level collapse" id="collapseLand" data-parent="#exampleAccordion">
+			            <li v-if="loggedIn">
+			              <a href="#" onclick="loadPage('couponList')">優惠卷列表</a>
+			            </li>
+			            <li v-if="loggedIn">
+			              <a href="#" onclick="loadPage('shop')">商家列表</a>
+			            </li>
+			            <li v-if="!loggedIn">
+			            	<a>請先登入以瀏覽</a>
+			            </li>
+		          	</ul>
+		        </li>
+				
+				<li class="nav-item" id="nav-people">
+		            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapsePeople" data-parent="#exampleAccordion">
+			            <span class="nav-link-text">人緣</span>
+			            <i class="fa fa-fw fa-angle-down float-right mt-1"></i>
+		          	</a>
+		          	<ul class="sidenav-second-level collapse" id="collapsePeople" data-parent="#exampleAccordion">
+			            <li v-if="loggedIn">
+			                <a href="#" onclick="loadPage('IM_people')">資管人</a>
+			            </li>
+			            <li v-if="loggedIn">
+			              	<a href="#" onclick="loadPage('chatroom')">聊天室</a>
+			            </li>
+			            <li v-if="loggedIn">
+			              	<!-- <a href="#" onclick="loadPage('show_intro')">表演介紹</a> -->
+			              	<a>表演介紹（即將推出）</a>
+			            </li>
+			            <li v-if="!loggedIn">
+			            	<a>請先登入以瀏覽</a>
+			            </li>
+		          	</ul>         	
+		        </li>
+	      	</ul>
+
+	     	<ul class="navbar-nav ml-auto jh">
+	        	<li class="nav-item" id="login-text" style="margin-right:100px;">
+		          	<a v-if="loggedIn" class="navbar-text">
+		            	又見面了，{{ username }}！您目前累積 {{ point }} 點
+		        	</a>	        		
+	        		<a v-else class="nav-link" href="https://imnight2018backend.ntu.im/allauth/facebook/login/">
+		          		您尚未<p class="text-warning d-inline">登入</p>
+		          	</a>
+		        </li>
+	        	<li class="nav-item">
+		          	<a class="nav-link" onclick="loadPage('about')">
+		            	關於我們
+		        	</a>
+		        </li>
+	        	<li class="nav-item">
+		          	<a class="nav-link" onclick="loadPage('contact')">
+		            	聯繫我們
+		        	</a>
+		        </li>
+		        <li v-if="loggedIn" class="nav-item">
+		          	<a class="nav-link" id="logout-btn" onclick="logout()">
+		            	Logout
+		        	</a>
+		        </li>
+	      	</ul>
+	    </div>
+  	</nav>
+
+	<!-- <div class="lazy" id="content-background" data-src="../img/bgRed.jpg"></div> -->
+	<div id="content-background"></div>
+	<div class="content-wrapper">
+		<div class="container main-content">
+		<!-- put content here -->
+		</div>
+	</div>
+	<div id="center-point"></div>
+	
+	<!-- for jQuery -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+ 	<script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+	<!-- for bootstrap -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<!-- for js scripts -->
+	<script src="js/vue.min.js"></script>
+	<script src="js/home.js"></script>
+	<!-- for font-awesome -->
+	<script src="js/fontawesome-all.js"></script>
+	<!-- for lazy load -->
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.6/jquery.lazy.min.js"></script>
+    <!-- for jscookie cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+	<!-- for web socket -->
+	<script src="js/reconnecting-websocket.min.js"></script>
+
+	<script src="js/hopscotch.min.js"></script>
+
+</body>
+</html>

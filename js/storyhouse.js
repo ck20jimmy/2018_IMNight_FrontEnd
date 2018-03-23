@@ -21,7 +21,7 @@ var resource = new Vue({
 		taskFinish: function(k){
 			gainPoints(20);
 			var label = document.getElementById("task"+k).innerHTML;
-			console.log("label:"+label);
+			// console.log("label:"+label);
             $.ajax({
 				type: 'POST',
 				url: 'https://imnight2018backend.ntu.im/lottery/finish/',
@@ -36,7 +36,7 @@ var resource = new Vue({
 					request.setRequestHeader("X-CSRFTOKEN", csrftoken);
 				},
 				success: function(data) {
-					console.log("label: "+label);
+					// console.log("label: "+label);
 				},
 				error: function(data) {
 					// alert("fail POST" + data);
@@ -52,7 +52,7 @@ var resource = new Vue({
 					withCredentials: true
 				},
 				success: function(data) {
-					console.log(data.is_task_available);
+					// console.log(data.is_task_available);
 					if(data.is_task_available == false){
 						resource.crack(storyId);
 					}
@@ -71,7 +71,7 @@ var resource = new Vue({
 					withCredentials: true
 				},
 				success: function(data) {
-					console.log(data);
+					// console.log(data);
 					$('#task'+id).html(data[0].task.label);
 					$('#content'+id).html(data[0].content);
 					story = data[0].task.label;
@@ -93,7 +93,7 @@ $(function() {
             withCredentials: true
         },
         success: function(data) {
-            //console.log(data);
+            // console.log(data);
             if(data.length > 4){
 				resource.storyMorethanFour = true;
 				for (var i = 0; i < 4; i++) {

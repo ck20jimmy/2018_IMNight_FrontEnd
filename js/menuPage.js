@@ -126,7 +126,7 @@ function is_login_init() {
         success: function(result) {
 			// console.log(result);
 
-			// revise vue object at tmplt.js
+			// revise vue object at home.js
 			user_status.loggedIn = true;
 			user_status.username = result.username;
 			user_status.point = result.profile.point;

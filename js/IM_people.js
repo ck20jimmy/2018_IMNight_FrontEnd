@@ -23,7 +23,7 @@ $(document).ready( function(){
 	});
 });
 
-//user link function in tmplt.js
+//user link function in home.js
 function load_chatroom( label, uname ){
 	link('chatroom', function(){
 		select_performer( label, uname )
