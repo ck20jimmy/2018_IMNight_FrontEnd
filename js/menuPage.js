@@ -244,7 +244,7 @@ $(function(){
 			}
 		},
 		error: function() {
-			// alert('get login status fail!');
+			location.href = "maintainence.html";
 		}
 	});
 
