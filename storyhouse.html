@@ -54,7 +54,7 @@
 									<span aria-hidden="true">&times;</span>
 								</button>
 						</div>
-						<div class="modal-body">
+						<div class="modal-body pb-1">
 							<p :id ="'content'+e.id">content</p>
 							<center v-on:click="taskFinish(e.id)">
 								<img v-bind="{id: 'egg'+e.id}" class="egg" src="img/egg.png">
@@ -65,8 +65,8 @@
 							</center>
 							<template :id = "'task'+e.id">store task label</template>
 						</div>
-						<div class="modal-footer justify-content-center">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+						<div class="modal-footer justify-content-center mb-2">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 						</div>
 					</div>
 				</div>
