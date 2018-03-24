@@ -231,3 +231,7 @@ $(document).ready(function(){
 	loadPage('menuPage');
 	$('#help-icon').on('click', startTour);
 });
+
+function showEggFoundModal() {
+	$('#eggFoundModal').modal('show');
+}

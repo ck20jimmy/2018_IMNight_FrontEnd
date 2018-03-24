@@ -19,7 +19,9 @@ var resource = new Vue({
             $('#eggUp' + k).addClass('upAnimate');
 		},
 		taskFinish: function(k){
+			showEggFoundModal();
 			gainPoints(20);
+			
 			var label = document.getElementById("task"+k).innerHTML;
 			// console.log("label:"+label);
             $.ajax({
