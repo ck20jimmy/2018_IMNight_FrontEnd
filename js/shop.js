@@ -42,6 +42,7 @@ $(document).ready(function(){
             //console.log(data);
 			for (var i = 0; i < data.length; i++) {
 				if(data[i].info != ""){
+					console.log(data[i]);
 					resource.shops.push(data[i]);
 				}
 			}
@@ -52,18 +53,18 @@ $(document).ready(function(){
     });
 
 	// show first shop information
-  //   setTimeout(function(){
-		// $('.list-group-item').first().addClass('active');
-		// $('.tab-pane').first().addClass('active');
+    setTimeout(function(){
+		$('.list-group-item').first().addClass('active');
+		$('.tab-pane').first().addClass('active');
 
-		// var firstID = resource.shops[0].id;
-		// resource.lastTab = firstID;
-		// $('#img-'+firstID).toggleClass('hideImg');
-		// $('#des-'+firstID).toggleClass('hidescript');
-		// $("#Img-"+firstID).toggleClass('movex');
-		// $("#Des-"+firstID).toggleClass('moveLeft');
-		// $("#DesDe-"+firstID).toggleClass('show');
-  //   }, 300);
+		var firstID = resource.shops[0].id;
+		resource.lastTab = firstID;
+		//$('#img-'+firstID).toggleClass('hideImg');
+		//$('#des-'+firstID).toggleClass('hidescript');
+		$("#Img-"+firstID).toggleClass('movex');
+		$("#Des-"+firstID).toggleClass('moveLeft');
+		$("#DesDe-"+firstID).toggleClass('show');
+    }, 500);
 });
 
 var resource = new Vue({
@@ -80,17 +81,17 @@ var resource = new Vue({
 			else {
 				this.lastTab = k;
 			}
-			$('#img-'+k).toggleClass('hideImg');
-			$('#des-'+k).toggleClass('hidescript');
+			//$('#img-'+k).toggleClass('hideImg');
+			//$('#des-'+k).toggleClass('hidescript');
 			for(var i = 0;i < this.shops.length; i++){
 				var tabID = this.shops[i].id;
 				if(tabID != k){
 					if($('#img-'+k).hasClass('hideImg')){
-						$('#img-'+tabID).removeClass('hideImg');
-						$('#des-'+tabID).addClass('hidescript');
+						//$('#img-'+tabID).removeClass('hideImg');
+						//$('#des-'+tabID).addClass('hidescript');
 					}else{
-						$('#img-'+tabID).addClass('hideImg');
-						$('#des-'+tabID).removeClass('hidescript');
+						//$('#img-'+tabID).addClass('hideImg');
+						//$('#des-'+tabID).removeClass('hidescript');
 					}
 				}
 			}
