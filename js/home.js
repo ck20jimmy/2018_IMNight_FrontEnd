@@ -230,6 +230,12 @@ $(document).ready(function(){
 
 	loadPage('menuPage');
 	$('#help-icon').on('click', startTour);
+
+
+	// for egg found focus
+	$('#eggFoundModal').on('hidden.bs.modal', function (e) {
+	    $('body').addClass('modal-open');
+	});
 });
 
 function showEggFoundModal() {

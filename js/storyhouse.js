@@ -115,6 +115,7 @@ $(function() {
             // alert("fail get article");
         }
     });
+    
 });
 
 
