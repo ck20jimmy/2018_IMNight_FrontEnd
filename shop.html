@@ -5,10 +5,10 @@
 		<meta name = "viewport" content = "width = device-width, initial-scale = 1, maximum-scale = 1" />
 		<title>合作商家</title>
 		<!-- custom css-->
-		<link href="css/shop.css" rel="stylesheet">
+		<link href="../css/shop.css" rel="stylesheet">
 		
 		<!-- Bootstrap core CSS -->
-		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="../css/bootstrap.min.css" rel="stylesheet">
 	</head>
 
 	<body>
@@ -54,6 +54,8 @@
 						<!-- <div v-for = "e in shops" class = "tab-pane fade context show" :id = "'right'+e.id" role="tabpanel" :aria-labelledby="'list-'+e.id" :style="{ backgroundImage: 'url(' + e.bg_url + ')' }"> -->
 						<div v-for = "e in shops" class = "tab-pane fade context show" :id = "'right'+e.id" role="tabpanel" :aria-labelledby="'list-'+e.id">
 							<center>
+								<h3>{{e.title}}</h3>
+								<h5>{{e.sub_title}}</h5>
 								<p v-html = "e.info" class = "word mb-5"></p>
 								<a :href = "e.url" target="_blank" ><img :src = "e.img" class = "rightImg"></a>
 							</center>
@@ -74,6 +76,6 @@
 		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 		
 		<!-- custom js -->
-		<script src="js/shop.js"></script>
+		<script src="../js/shop.js"></script>
 	</body>
 </html>
