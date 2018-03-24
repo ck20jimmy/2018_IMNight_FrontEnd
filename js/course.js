@@ -19,6 +19,7 @@ var resource = new Vue({
 		},
 		taskFinish: function(k){
 			/* need to add 1 point*/
+			showEggFoundModal();
 			gainPoints(20);
 			
 			var label = document.getElementById("task"+k).innerHTML; 
