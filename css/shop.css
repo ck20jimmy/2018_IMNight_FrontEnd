@@ -53,6 +53,7 @@
 		}
 	}
 	.hidescript{
+		display:none;
 		visibility:hidden;
 		height:0px;
 		animation:slideRight 1s; 
