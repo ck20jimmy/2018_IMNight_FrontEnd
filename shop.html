@@ -54,8 +54,8 @@
 						<!-- <div v-for = "e in shops" class = "tab-pane fade context show" :id = "'right'+e.id" role="tabpanel" :aria-labelledby="'list-'+e.id" :style="{ backgroundImage: 'url(' + e.bg_url + ')' }"> -->
 						<div v-for = "e in shops" class = "tab-pane fade context show" :id = "'right'+e.id" role="tabpanel" :aria-labelledby="'list-'+e.id">
 							<center>
-								<h3>{{e.title}}</h3>
-								<h5>{{e.sub_title}}</h5>
+								<h3 class="word new-title-color">{{e.title}}</h3>
+								<h5 class="word new-context-color">{{e.sub_title}}</h5>
 								<p v-html = "e.info" class = "word mb-5"></p>
 								<a :href = "e.url" target="_blank" ><img :src = "e.img" class = "rightImg"></a>
 							</center>
