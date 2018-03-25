@@ -83,7 +83,7 @@ steps: [
     placement: "right",
     onShow: function(){
     	$('#people-nav').trigger('click');
-    }
+    },
     onNext: function(){
     	$('#people-nav').trigger('click');
     }
