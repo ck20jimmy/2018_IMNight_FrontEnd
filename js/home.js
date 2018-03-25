@@ -10,10 +10,6 @@ steps: [
     arrowOffset: 150,
     xOffset: -150,
     onShow: function(){
-    	// setTimeout(function(){
-    	// 	$('#remind-close').attr('disabled', true);
-    	// }, 1000);
-    	// $('#remindModal').modal('show');
     	$('#remindModal').modal('hide');
     }
   },
@@ -24,6 +20,22 @@ steps: [
     placement: "bottom",
     fixedElement: true,
     xOffset: 20,
+    // onNext: function(){
+    // 	// $('#remindModal').modal('show');
+    // 	setTimeout(function(){
+    // 		$('#remind-close').attr('disabled', true);
+    // 	}, 1000);
+    // 	$('#remindModal').modal('show');
+    // }
+  },
+  {
+    title: "打開提醒視窗",
+    content: "點擊鈴鐺icon來打開提醒視窗，<br>在提醒視窗，你可以抽卡、抽每日優惠券，和查看最新消息。<br>時不時打開它看看吧！",
+    target: "bell-icon",
+    placement: "bottom",
+    fixedElement: true,
+    arrowOffset: 150,
+    xOffset: -150,
     onNext: function(){
     	// $('#remindModal').modal('show');
     	setTimeout(function(){
@@ -34,7 +46,7 @@ steps: [
   },
   {
     title: "天天抽卡、抽優惠券吧",
-    content: "在提醒視窗中點擊來抽卡和每日優惠券。<br>你可以前往聊天室，和抽過的卡友聊聊；<br>也可以前往優惠券列表，去附近商家使用你的優惠券！",
+    content: "在提醒視窗中點擊來抽卡和每日優惠券。您可以前往地緣->優惠券列表，去附近商家使用你的優惠券。",
     target: "help-icon",
     fixedElement: true,
     placement: "bottom",
@@ -43,17 +55,37 @@ steps: [
     yOffset: 250,
     onNext: function(){
     	$('#remindModal').modal('hide');
+    	$('#burger-toggler').trigger('click');
     }
   },
   {
-    title: "選單",
-    content: "點擊選單或主畫面下方的導覽列來查看2018資管之夜資訊，以及瀏覽天、地、人緣所有內容。",
-    target: "burger-toggler",
-    placement: "bottom",
-    xOffset: -230,
-    arrowOffset: 230,
+    title: "選單：天緣",
+    content: "IM故事館蘊藏著資管系人們的故事；<br>課程與學習資源則收錄部分系上必修課程資訊。",
+    target: "sky-nav",
+    placement: "right",
+    onShow: function(){
+    	$('#sky-nav').trigger('click');
+    }
+  },
+  {
+    title: "選單：地緣",
+    content: "到優惠券列表查看&使用您擁有的優惠券，記得讓店員點選使用按鈕！<br>商家列表則是在地店家的資訊。",
+    target: "land-nav",
+    placement: "right",
+    onShow: function(){
+    	$('#land-nav').trigger('click');
+    }
+  },
+  {
+    title: "選單：人緣",
+    content: "資管人記錄了所有你抽過的表演者資訊，快到聊天室找他們聊聊！",
+    target: "people-nav",
+    placement: "right",
+    onShow: function(){
+    	$('#people-nav').trigger('click');
+    }
     onNext: function(){
-    	$('#burger-toggler').trigger('click');
+    	$('#people-nav').trigger('click');
     }
   },
   {
@@ -221,22 +253,22 @@ function startTour(){
 
 	if ($(window).width() > 992) {
 		var tour2 = $.extend(true, {}, tour);
-		tour2.steps[3].target = "nav-people";
-		tour2.steps[3].xOffset = 50;
-		tour2.steps[3].arrowOffset = 0;
-		tour2.steps[3].onNext = undefined;
-		tour2.steps[2].xOffset = $(window).width()/2-$('#help-icon').offset().left-140;
-		tour2.steps[2].yOffset = $(window).height()/2-100;
+		tour2.steps[4].target = "nav-people";
+		tour2.steps[4].xOffset = 50;
+		tour2.steps[4].arrowOffset = 0;
+		tour2.steps[4].onNext = undefined;
+		tour2.steps[3].xOffset = $(window).width()/2-$('#help-icon').offset().left-140;
+		tour2.steps[3].yOffset = $(window).height()/2-100;
 		if (prev_js != "js/menuPage.js") {
-			tour2.steps.splice(2,1);
+			tour2.steps.splice(3,1);
 		}
 		hopscotch.startTour(tour2);
 	}
 	else {
 		var tour1 = $.extend(true, {}, tour);
-		tour1.steps[2].yOffset = $(window).height()*0.3;
+		tour1.steps[3].yOffset = $(window).height()*0.3;
 		if (prev_js != "js/menuPage.js") {
-			tour1.steps.splice(2,1);	
+			tour1.steps.splice(3,1);	
 		}
 
 		hopscotch.startTour(tour1);
@@ -260,57 +292,6 @@ $(document).click( function (event){
 		$("#navbarResponsive").collapse('hide');
 	}
 })
-
-$(document).ready(function(){
-	$('.lazy').Lazy({
-		effect: 'fadeIn',
-		effectTime: 2000,
-		threshold: 0,
-        onError: function(element) {
-            console.log('error loading ' + element.data('src'));
-        }
-	});
-
-	// check if the user has logged in
-	$.ajax({
-		type: 'GET',
-		url: 'https://imnight2018backend.ntu.im/accounts/check/login/',
-		xhrFields: {
-            withCredentials: true
-        },
-        success: function(data) {
-        	// console.log('login status: ' + data.auth_status);
-
-			if (data.auth_status) {
-				is_login_init();
-			}
-
-			// if the user hasn't logged in, remove remind modal
-			else {
-				not_login_init();
-			}
-		},
-		error: function() {
-			location.href = "maintainence.html";
-		}
-	});
-	// draw card and draw coupon events
-	$('#draw-card').on('click', draw_card);
-	$('#draw-discount').on('click', draw_coupon);
-
-
-	// initialize tooltip
-	$('[data-toggle="tooltip"]').tooltip({'placement': 'top'});
-
-	loadPage('menuPage');
-	$('#help-icon').on('click', startTour);
-	$('#bell-icon').on('click', show_remind_modal);
-
-	// for egg found focus
-	$('#eggFoundModal').on('hidden.bs.modal', function (e) {
-	    $('body').addClass('modal-open');
-	});
-});
 
 function showEggFoundModal() {
 	$('#eggFoundModal').modal('show');
@@ -476,3 +457,54 @@ function draw_coupon() {
 		}
 	});
 }
+
+$(document).ready(function(){
+	$('.lazy').Lazy({
+		effect: 'fadeIn',
+		effectTime: 2000,
+		threshold: 0,
+        onError: function(element) {
+            console.log('error loading ' + element.data('src'));
+        }
+	});
+
+	// check if the user has logged in
+	$.ajax({
+		type: 'GET',
+		url: 'https://imnight2018backend.ntu.im/accounts/check/login/',
+		xhrFields: {
+            withCredentials: true
+        },
+        success: function(data) {
+        	// console.log('login status: ' + data.auth_status);
+
+			if (data.auth_status) {
+				is_login_init();
+			}
+
+			// if the user hasn't logged in, remove remind modal
+			else {
+				not_login_init();
+			}
+		},
+		error: function() {
+			location.href = "maintainence.html";
+		}
+	});
+	// draw card and draw coupon events
+	$('#draw-card').on('click', draw_card);
+	$('#draw-discount').on('click', draw_coupon);
+
+
+	// initialize tooltip
+	$('[data-toggle="tooltip"]').tooltip({'placement': 'top'});
+
+	loadPage('menuPage');
+	$('#help-icon').on('click', startTour);
+	$('#bell-icon').on('click', show_remind_modal);
+
+	// for egg found focus
+	$('#eggFoundModal').on('hidden.bs.modal', function (e) {
+	    $('body').addClass('modal-open');
+	});
+});
