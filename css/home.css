@@ -37,7 +37,8 @@ body {
 	color: #4e274a;
 }
 
-#help-icon {
+#help-icon,
+#bell-icon {
 	border: none;
 	background: transparent;
 }

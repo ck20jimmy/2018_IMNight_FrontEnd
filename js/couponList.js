@@ -115,7 +115,7 @@ var resource = new Vue({
 			
 			this.updateVocher(k);
             this.dcheck(k);
-            console.log(k);
+            // console.log(k);
 			$('.modal'+k).modal('toggle');
 			$(".modal-backdrop.fade.show").remove();
 				

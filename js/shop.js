@@ -42,7 +42,7 @@ $(document).ready(function(){
             //console.log(data);
 			for (var i = 0; i < data.length; i++) {
 				if(data[i].info != ""){
-					console.log(data[i]);
+					// console.log(data[i]);
 					resource.shops.push(data[i]);
 				}
 			}

@@ -244,7 +244,7 @@ $(function(){
 			}
 		},
 		error: function() {
-			location.href = "maintainence.html";
+			// location.href = "maintainence.html";
 		}
 	});
 
