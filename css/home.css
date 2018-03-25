@@ -32,7 +32,8 @@ body {
 }
 
 #nav-btn:hover,
-#help-icon:hover {
+#help-icon:hover,
+#bell-icon:hover {
 	cursor: pointer;
 	color: #4e274a;
 }
@@ -45,6 +46,12 @@ body {
 
 #nav-btn {
 	width: 150px;
+}
+
+.home-modal {
+	background: linear-gradient(rgba(255,255,255,0.9),rgba(255,255,255,0.9)), url("../img/bgRed.jpg") no-repeat center center;
+	background-size: cover;
+	-moz-background-size: cover;
 }
 
 .content-wrapper{
