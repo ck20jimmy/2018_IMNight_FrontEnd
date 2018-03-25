@@ -20,7 +20,7 @@
     <div id="mainContext">
 	<!--control panal-->
         <div class="main">
-			<div class="row">
+			<div class="row couponListRow">
 				<div class="col-md-12 text-center">
 					<h1 class="titles new-title-color"><b>優惠券們</b></h1>
 					<h6 class="subtitles"></h6>
@@ -38,7 +38,7 @@
 			</div>
 
             <!--couponList start-->
-            <div class="row grid">
+            <div class="row grid couponListRow">
                 <div class="cardInRow" v-for="e in coupons">
 					<div class="card box-shadow" :id="'coupen'+e.vocher.id" data-toggle="modal" :data-target="'#modal'+e.vocher.id">
 						<div class = "cit" :style="{ 'background-image' : 'url(\'' + e.vocher.img + '\')' }">
@@ -67,7 +67,7 @@
                             </div>
 
                             <div class="modal-body" :id="'modal-body'+e.vocher.id">
-                                <div class="row">
+                                <div class="row couponListRow">
                                     <div class="front" :id="'front'+e.vocher.id">
                                         <div class="col-md-6">
                                             <img :src="e.vocher.img" style="width:100%;">
