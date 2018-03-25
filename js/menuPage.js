@@ -145,9 +145,10 @@ function not_login_init() {
 	$('#loginModal').modal('toggle');
 
 	$('.loginDeny').attr("onclick", null);
-	$('#help-icon').on('click', function(){
-		$('#loginModal').modal('show');
-	});
+	// $('#help-icon').on('click', function(){
+	// 	$('#loginModal').modal('show');
+	// });
+	$('#help-icon').remove();
 }
 
 function draw_card() {
@@ -244,7 +245,7 @@ $(function(){
 			}
 		},
 		error: function() {
-			// location.href = "maintainence.html";
+			location.href = "maintainence.html";
 		}
 	});
 

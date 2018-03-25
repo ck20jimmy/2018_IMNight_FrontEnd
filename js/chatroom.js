@@ -33,6 +33,7 @@ $(document).ready(function(){
 });
 
 function select_performer( label, uname ){
+    $('#send-row').css('visibility', 'visible');
     $("#performer-name").empty().text(uname);
     $("#chatcontent").empty();
 

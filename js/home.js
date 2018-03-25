@@ -210,6 +210,15 @@ function startTour(){
 	hopscotch.showStep(0);
 }
 
+function show_remind_modal() {
+	if (user_status.loggedIn) {
+		$('remindModal').modal('show');
+	}
+	else {
+		$('loginModal').modal('show');
+	}
+}
+
 $(document).click( function (event){
 	let clickover = event.target;
 	let opened = $(".navbar-collapse").hasClass('show');
@@ -230,7 +239,7 @@ $(document).ready(function(){
 
 	loadPage('menuPage');
 	$('#help-icon').on('click', startTour);
-
+	$('#bell-icon').on('click', show_remind_modal);
 
 	// for egg found focus
 	$('#eggFoundModal').on('hidden.bs.modal', function (e) {
