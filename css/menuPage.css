@@ -55,7 +55,7 @@ body {
 	color: #4e274a;
 }
 
-#rare-text:hover {
+/* #rare-text:hover {
 	cursor: pointer;
 }
 
@@ -73,7 +73,6 @@ body {
 .drawn-text {
 	color: red;
 	cursor: pointer;
-	/* font-size: 1.5rem; */
 }
 
 #draw-card, 
@@ -86,7 +85,7 @@ body {
 #fb-btn {
 	background-color: #3b5998;
 	color: white;
-}
+} */
 
 .enlarge {
 	transition: 1.2s ease-in-out;

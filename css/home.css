@@ -213,3 +213,35 @@ nav{
 .modal-open{
 	padding-right: 0px !important;
 }
+
+#rare-text:hover {
+	cursor: pointer;
+}
+
+#rare-text {
+	color: #999999;
+}
+
+#loginModal,
+#remindModal {
+	display: block;
+}
+
+#draw-card:hover, 
+#draw-discount:hover,
+.drawn-text {
+	color: red;
+	cursor: pointer;
+}
+
+#draw-card, 
+#draw-discount,
+.drawn-text {
+	color: #ff5809 !important;
+	font-size: 1.45rem;
+}
+
+#fb-btn {
+	background-color: #3b5998;
+	color: white;
+}
