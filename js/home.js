@@ -212,10 +212,10 @@ function startTour(){
 
 function show_remind_modal() {
 	if (user_status.loggedIn) {
-		$('remindModal').modal('show');
+		$('#remindModal').modal('show');
 	}
 	else {
-		$('loginModal').modal('show');
+		$('#loginModal').modal('show');
 	}
 }
 
