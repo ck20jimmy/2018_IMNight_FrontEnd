@@ -259,6 +259,8 @@ function startTour(){
     	tour2.steps[3].onNext = function(){ $('#remindModal').modal('hide'); $('#sky-nav').trigger('click'); };
 		tour2.steps[3].xOffset = $(window).width()/2-$('#help-icon').offset().left-140;
 		tour2.steps[3].yOffset = $(window).height()/2-100;
+		tour2.steps[4].yOffset = 50;
+   		tour2.steps[6].yOffset = 40;
 		hopscotch.startTour(tour2);
 	}
 	else {
