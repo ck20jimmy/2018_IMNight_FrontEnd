@@ -347,10 +347,10 @@ function getDrawn() {
 			}
 
 			// for notification
-			if (data.vocher_drawn) {
+			if (!data.vocher_drawn) {
 				user_status.remind++;
 			}
-			if (data.performer_drawn) {
+			if (!data.performer_drawn) {
 				user_status.remind++;
 			}
 		}
