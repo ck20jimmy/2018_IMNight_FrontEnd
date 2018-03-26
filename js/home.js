@@ -64,9 +64,10 @@ steps: [
     content: "IM故事館蘊藏著資管系人們的故事；<br>課程與學習資源則收錄部分系上必修課程資訊。",
     target: "sky-nav",
     placement: "bottom",
-    yOffset: 50,
+    yOffset: 80,
     xOffset: 20,
     onNext: function(){
+    	$('#burger-toggler').trigger('click');
     	$('#land-nav').trigger('click');
     }
   },
@@ -75,9 +76,10 @@ steps: [
     content: "到優惠券列表查看&使用您擁有的優惠券，記得讓店員點選使用按鈕！<br>商家列表則是在地店家的資訊。",
     target: "land-nav",
     placement: "bottom",
-    yOffset: 50,
+    yOffset: 80,
     xOffset: 20,
     onNext: function(){
+    	$('#burger-toggler').trigger('click');
     	$('#people-nav').trigger('click');
     }
   },
@@ -86,9 +88,10 @@ steps: [
     content: "資管人記錄了所有你抽過的表演者資訊，快到聊天室找他們聊聊！",
     target: "people-nav",
     placement: "bottom",
-    yOffset: 50,
+    yOffset: 80,
     xOffset: 20,
     onNext: function(){
+    	$('#burger-toggler').trigger('click');
     	$('#people-nav').trigger('click');
     }
   },
