@@ -64,8 +64,6 @@ steps: [
     xOffset: 20,
     onNext: function(){
 	    $('#land-nav').trigger('click');
-	    setTimeout(function(){
-	    }, 600);
     }
   },
   {
@@ -73,12 +71,9 @@ steps: [
     content: "到優惠券列表查看&使用您擁有的優惠券，記得讓店員點選使用按鈕！<br>商家列表則是在地店家的資訊。",
     target: "land-nav",
     placement: "bottom",
-    yOffset: 80,
-    xOffset: 30,
+    xOffset: 20,
     onNext: function(){
 	    $('#people-nav').trigger('click');
-	    setTimeout(function(){
-	    }, 600);
     }
   },
   {
@@ -86,7 +81,7 @@ steps: [
     content: "資管人記錄了所有你抽過的表演者資訊，快到聊天室找他們聊聊！",
     target: "people-nav",
     placement: "bottom",
-    yOffset: 110,
+    yOffset: 30,
     xOffset: 20
   },
   {
@@ -264,8 +259,6 @@ function startTour(){
     	tour2.steps[3].onNext = function(){ $('#remindModal').modal('hide'); $('#sky-nav').trigger('click'); };
 		tour2.steps[3].xOffset = $(window).width()/2-$('#help-icon').offset().left-140;
 		tour2.steps[3].yOffset = $(window).height()/2-100;
-		tour2.steps[4].yOffset = 110;
-   		tour2.steps[6].yOffset = 60;
 		hopscotch.startTour(tour2);
 	}
 	else {
