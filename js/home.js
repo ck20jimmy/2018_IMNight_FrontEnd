@@ -95,7 +95,7 @@ steps: [
     target: "login-text",
     placement: "bottom",
     xOffset: 50,
-    onShow: function(){
+    onNext: function(){
     	$(document).on('click', navhide);
     }
   },
