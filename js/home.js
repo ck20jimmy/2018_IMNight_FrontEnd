@@ -15,7 +15,7 @@ steps: [
   },
   {
     title: "主畫面按鈕",
-    content: "點擊左上角字樣來回到主畫面。<br>在主畫面，你可以抽卡、抽每日優惠券，和查看最新消息。<br>時不時回主畫面查看吧！",
+    content: "點擊左上角字樣來回到主畫面。",
     target: "nav-btn",
     placement: "bottom",
     fixedElement: true,
