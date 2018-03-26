@@ -67,8 +67,10 @@ steps: [
     yOffset: 80,
     xOffset: 20,
     onNext: function(){
-    	$('#burger-toggler').trigger('click');
-    	$('#land-nav').trigger('click');
+    	setTimeout(function(){
+	    	$('#burger-toggler').trigger('click');
+	    	$('#land-nav').trigger('click');
+    	}, 100);
     }
   },
   {
@@ -79,8 +81,10 @@ steps: [
     yOffset: 80,
     xOffset: 20,
     onNext: function(){
-    	$('#burger-toggler').trigger('click');
-    	$('#people-nav').trigger('click');
+    	setTimeout(function(){
+	    	$('#burger-toggler').trigger('click');
+	    	$('#people-nav').trigger('click');
+    	}, 100);
     }
   },
   {
@@ -91,8 +95,9 @@ steps: [
     yOffset: 80,
     xOffset: 20,
     onNext: function(){
-    	$('#burger-toggler').trigger('click');
-    	$('#people-nav').trigger('click');
+    	setTimeout(function(){
+	    	$('#burger-toggler').trigger('click');
+    	}, 100);
     }
   },
   {
@@ -260,10 +265,11 @@ function startTour(){
 
 	if ($(window).width() > 992) {
 		var tour2 = $.extend(true, {}, tour);
-		// tour2.steps[4].target = "nav-people";
-		// tour2.steps[4].xOffset = 50;
-		// tour2.steps[4].arrowOffset = 0;
-		// tour2.steps[4].onNext = undefined;
+
+    	tour2.steps[3].onNext = function(){ $('#sky-nav').trigger('click'); };
+    	tour2.steps[4].onNext = function(){ $('#land-nav').trigger('click'); };
+    	tour2.steps[5].onNext = function(){ $('#people-nav').trigger('click'); };
+    	tour2.steps[6].onNext = function(){ $('#people-nav').trigger('click'); };
 		tour2.steps[3].xOffset = $(window).width()/2-$('#help-icon').offset().left-140;
 		tour2.steps[3].yOffset = $(window).height()/2-100;
 		if (prev_js != "js/menuPage.js") {
