@@ -65,7 +65,7 @@ steps: [
     onNext: function(){
 	    $('#land-nav').trigger('click');
 	    setTimeout(function(){
-	    }, 300);
+	    }, 600);
     }
   },
   {
@@ -74,11 +74,11 @@ steps: [
     target: "land-nav",
     placement: "bottom",
     yOffset: 80,
-    xOffset: 20,
+    xOffset: 30,
     onNext: function(){
 	    $('#people-nav').trigger('click');
 	    setTimeout(function(){
-	    }, 300);
+	    }, 600);
     }
   },
   {
@@ -261,20 +261,13 @@ function startTour(){
     	tour2.steps[3].onNext = function(){ $('#remindModal').modal('hide'); $('#sky-nav').trigger('click'); };
 		tour2.steps[3].xOffset = $(window).width()/2-$('#help-icon').offset().left-140;
 		tour2.steps[3].yOffset = $(window).height()/2-100;
-		// tour2.steps[4].yOffset = 110;
-   		// tour2.steps[5].yOffset = 50;
-		// if (prev_js != "js/menuPage.js") {
-		// 	tour2.steps.splice(3,1);
-		// }
+		tour2.steps[4].yOffset = 110;
+   		tour2.steps[6].yOffset = 60;
 		hopscotch.startTour(tour2);
 	}
 	else {
 		var tour1 = $.extend(true, {}, tour);
 		tour1.steps[3].yOffset = $(window).height()*0.3;
-		// if (prev_js != "js/menuPage.js") {
-		// 	tour1.steps.splice(3,1);	
-		// }
-
 		hopscotch.startTour(tour1);
 	}
 	hopscotch.showStep(0);
