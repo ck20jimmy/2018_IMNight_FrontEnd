@@ -1,28 +1,7 @@
-/* html {
-	height: 100%;
-}
-
-body {
-	height: 100%;
-}
- */
 #menuPage {
 	padding: 0;
 	height: 100%;
-	/* background-size: cover; */
 }
-
-/* .bgRed {
-	background: linear-gradient(rgba(255,255,255,0.8),rgba(255,255,255,0.8)), url("../img/bgRed-2.jpg") no-repeat center center;
-	height: 100%;
-	background-size: cover;
-} */
-
-/* .jh {
-	font-weight: 900;
-	font-family: "微軟正黑體", "Microsoft JhengHei","細明體", "MingLiU", "標楷體", "DFKai-sb", serif;
-	color: #272727;
-} */
 
 .no-marg {
 	margin-left: 0px;
@@ -54,38 +33,6 @@ body {
 	cursor: pointer;
 	color: #4e274a;
 }
-
-/* #rare-text:hover {
-	cursor: pointer;
-}
-
-#rare-text {
-	color: #999999;
-}
-
-#loginModal,
-#remindModal {
-	display: block;
-}
-
-#draw-card:hover, 
-#draw-discount:hover,
-.drawn-text {
-	color: red;
-	cursor: pointer;
-}
-
-#draw-card, 
-#draw-discount,
-.drawn-text {
-	color: #ff5809 !important;
-	font-size: 1.45rem;
-}
-
-#fb-btn {
-	background-color: #3b5998;
-	color: white;
-} */
 
 .enlarge {
 	transition: 1.2s ease-in-out;
