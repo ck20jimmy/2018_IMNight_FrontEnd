@@ -197,10 +197,10 @@ function switchCase() {
 
 switchCase();
 
-function goShop() {
-    $('.modal').modal('toggle');
-    $(".modal-backdrop.fade.show").remove();
-    setTimeout(function(){
-        loadPage('shop');
-    }, 500);
-}
+// function goShop() {
+//     $('.modal').modal('toggle');
+//     $(".modal-backdrop.fade.show").remove();
+//     setTimeout(function(){
+//         loadPage('shop');
+//     }, 500);
+// }

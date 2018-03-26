@@ -81,7 +81,7 @@
                                                 <b>使用期限:</b><br /> {{e.vocher.due_time.substring(0,10)}}
                                                 <br />
                                                 <br />
-                                                <a onclick="goShop()" class="hvr-underline-from-right">商家列表</a>
+                                                <a onclick="jumpPage('shop')" class="hvr-underline-from-right">商家列表</a>
                                                 <a v-if="e.usable" class="hvr-underline-from-right" @click="delayShow(e.vocher.id)">我要使用</a>
                                             </center>
                                         </div>
