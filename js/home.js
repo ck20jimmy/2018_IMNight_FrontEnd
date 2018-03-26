@@ -19,14 +19,7 @@ steps: [
     target: "nav-btn",
     placement: "bottom",
     fixedElement: true,
-    xOffset: 20,
-    // onNext: function(){
-    // 	// $('#remindModal').modal('show');
-    // 	setTimeout(function(){
-    // 		$('#remind-close').attr('disabled', true);
-    // 	}, 1000);
-    // 	$('#remindModal').modal('show');
-    // }
+    xOffset: 20
   },
   {
     title: "打開提醒視窗",
@@ -55,8 +48,11 @@ steps: [
     yOffset: 250,
     onNext: function(){
     	$('#remindModal').modal('hide');
-    	$('#burger-toggler').trigger('click');
-    	$('#sky-nav').trigger('click');
+    	$("#navbarResponsive").collapse('show');
+    	setTimeout(function(){
+    		$('#sky-nav').trigger('click');
+    	}, 200);
+    	$(document).off('click', navhide);
     }
   },
   {
@@ -67,10 +63,7 @@ steps: [
     yOffset: 80,
     xOffset: 20,
     onNext: function(){
-    	setTimeout(function(){
-	    	$('#burger-toggler').trigger('click');
-	    	$('#land-nav').trigger('click');
-    	}, 100);
+	    $('#land-nav').trigger('click');
     }
   },
   {
@@ -81,10 +74,7 @@ steps: [
     yOffset: 80,
     xOffset: 20,
     onNext: function(){
-    	setTimeout(function(){
-	    	$('#burger-toggler').trigger('click');
-	    	$('#people-nav').trigger('click');
-    	}, 100);
+	    $('#people-nav').trigger('click');
     }
   },
   {
@@ -92,12 +82,10 @@ steps: [
     content: "資管人記錄了所有你抽過的表演者資訊，快到聊天室找他們聊聊！",
     target: "people-nav",
     placement: "bottom",
-    yOffset: 80,
+    yOffset: 110,
     xOffset: 20,
     onNext: function(){
-    	setTimeout(function(){
-	    	$('#burger-toggler').trigger('click');
-    	}, 100);
+    	$('#people-nav').trigger('click');
     }
   },
   {
@@ -267,11 +255,10 @@ function startTour(){
 		var tour2 = $.extend(true, {}, tour);
 
     	tour2.steps[3].onNext = function(){ $('#remindModal').modal('hide'); $('#sky-nav').trigger('click'); };
-    	tour2.steps[4].onNext = function(){ $('#land-nav').trigger('click'); };
-    	tour2.steps[5].onNext = function(){ $('#people-nav').trigger('click'); };
-    	tour2.steps[6].onNext = function(){ $('#people-nav').trigger('click'); };
 		tour2.steps[3].xOffset = $(window).width()/2-$('#help-icon').offset().left-140;
 		tour2.steps[3].yOffset = $(window).height()/2-100;
+		tour2.steps[4].yOffset = 110;
+   		tour2.steps[5].yOffset = 50;
 		if (prev_js != "js/menuPage.js") {
 			tour2.steps.splice(3,1);
 		}
