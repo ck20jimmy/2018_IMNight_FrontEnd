@@ -124,10 +124,12 @@ onEnd: function(){
    			request.setRequestHeader("X-CSRFTOKEN", csrftoken);
   		}
 	});
+	$(document).on('click', navhide);
 },
 onClose: function(){
 	$('#remindModal').modal('show');
-	$('#remind-close').attr('disabled', false);	
+	$('#remind-close').attr('disabled', false);
+	$(document).on('click', navhide);
 }
 };
 
