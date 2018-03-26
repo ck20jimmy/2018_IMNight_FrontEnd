@@ -168,11 +168,12 @@ var coupon = new Vue({
 });
 
 var user_status = new Vue({
-	el: '#navbarResponsive',
+	el: '#mainNav',
 	data: {
 		loggedIn: false,
 		username: '',
-		point: 0
+		point: 0,
+		remind: 0
 	}
 });
 
@@ -346,15 +347,11 @@ function getDrawn() {
 			}
 
 			// for notification
-			var noti = 0;
 			if (data.vocher_drawn) {
-				noti++;
+				user_status.remind++;
 			}
 			if (data.performer_drawn) {
-				noti++;
-			}
-			if (noti > 0) {
-				$('#notify-icon').text(noti).css('visibility', 'visible');
+				user_status.remind++;
 			}
 		}
 	});	
@@ -414,6 +411,7 @@ function draw_card() {
 
 			remind_modal.drawnCard = true;
 			gainPoints(30);
+			user_status.remind--;
 		}
 	});
 
@@ -451,6 +449,7 @@ function draw_coupon() {
 
 			remind_modal.takenDiscount = true;
 			gainPoints(30);
+			user_status.remind--;
 		}
 	});
 }
