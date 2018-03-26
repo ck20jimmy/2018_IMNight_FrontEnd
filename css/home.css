@@ -247,7 +247,8 @@ nav{
 }
 
 #draw-card:hover, 
-#draw-discount:hover {
+#draw-discount:hover,
+.drawn-text:hover {
 	color: red;
 	cursor: pointer;
 }
@@ -258,7 +259,7 @@ nav{
 	font-size: 1.45rem;
 }
 
-#drawn-text {
+.drawn-text {
 	color: #43a047 !important;
 	font-size: 1.45rem;
 }
