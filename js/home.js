@@ -380,6 +380,7 @@ function is_login_init() {
 
 function not_login_init() {
 	user_status.loggedIn = false;
+	user_status.remind++;
 
 	$('#remindModal').remove();
 	$('#loginModal').modal('toggle');
