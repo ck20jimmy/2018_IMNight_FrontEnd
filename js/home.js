@@ -266,7 +266,7 @@ function startTour(){
 	if ($(window).width() > 992) {
 		var tour2 = $.extend(true, {}, tour);
 
-    	tour2.steps[3].onNext = function(){ $('#sky-nav').trigger('click'); };
+    	tour2.steps[3].onNext = function(){ $('#remindModal').modal('hide'); $('#sky-nav').trigger('click'); };
     	tour2.steps[4].onNext = function(){ $('#land-nav').trigger('click'); };
     	tour2.steps[5].onNext = function(){ $('#people-nav').trigger('click'); };
     	tour2.steps[6].onNext = function(){ $('#people-nav').trigger('click'); };
@@ -297,14 +297,6 @@ function show_remind_modal() {
 		$('#loginModal').modal('show');
 	}
 }
-
-$(document).click( function (event){
-	let clickover = event.target;
-	let opened = $(".navbar-collapse").hasClass('show');
-	if( opened && !$("nav.navbar").has(clickover).length ){
-		$("#navbarResponsive").collapse('hide');
-	}
-})
 
 function showEggFoundModal() {
 	$('#eggFoundModal').modal('show');
@@ -470,6 +462,16 @@ function draw_coupon() {
 		}
 	});
 }
+
+function navhide(event){
+	let clickover = event.target;
+	let opened = $(".navbar-collapse").hasClass('show');
+	if( opened && !$("nav.navbar").has(clickover).length ){
+		$("#navbarResponsive").collapse('hide');
+	}
+}
+
+$(document).on('click', navhide);
 
 $(document).ready(function(){
 	$('.lazy').Lazy({
