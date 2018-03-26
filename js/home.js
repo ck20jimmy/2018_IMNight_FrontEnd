@@ -64,6 +64,8 @@ steps: [
     xOffset: 20,
     onNext: function(){
 	    $('#land-nav').trigger('click');
+	    setTimeout(function(){
+	    }, 300);
     }
   },
   {
@@ -75,6 +77,8 @@ steps: [
     xOffset: 20,
     onNext: function(){
 	    $('#people-nav').trigger('click');
+	    setTimeout(function(){
+	    }, 300);
     }
   },
   {
@@ -83,17 +87,17 @@ steps: [
     target: "people-nav",
     placement: "bottom",
     yOffset: 110,
-    xOffset: 20,
-    onNext: function(){
-    	$('#people-nav').trigger('click');
-    }
+    xOffset: 20
   },
   {
     title: '尋找彩蛋、累積點數！',
     content: '每次抽卡、抽優惠券都能加30點，找到藏在「天緣」文章中的彩蛋也能加20點。<br>集點越多越有機會在之夜當天抽到豐厚獎品。',
     target: "login-text",
     placement: "bottom",
-    xOffset: 50
+    xOffset: 50,
+    onShow: function(){
+    	$(document).on('click', navhide);
+    }
   },
   {
     title: '幫助',
@@ -257,11 +261,11 @@ function startTour(){
     	tour2.steps[3].onNext = function(){ $('#remindModal').modal('hide'); $('#sky-nav').trigger('click'); };
 		tour2.steps[3].xOffset = $(window).width()/2-$('#help-icon').offset().left-140;
 		tour2.steps[3].yOffset = $(window).height()/2-100;
-		tour2.steps[4].yOffset = 110;
-   		tour2.steps[5].yOffset = 50;
-		if (prev_js != "js/menuPage.js") {
-			tour2.steps.splice(3,1);
-		}
+		// tour2.steps[4].yOffset = 110;
+   		// tour2.steps[5].yOffset = 50;
+		// if (prev_js != "js/menuPage.js") {
+		// 	tour2.steps.splice(3,1);
+		// }
 		hopscotch.startTour(tour2);
 	}
 	else {
