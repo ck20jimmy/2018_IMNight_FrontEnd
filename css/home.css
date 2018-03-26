@@ -44,6 +44,19 @@ body {
 	background: transparent;
 }
 
+#notify-icon {
+	background-color: #fa3e3e;
+	border-radius: 50%;
+	color: white;
+	font-size: 15px;
+	position: absolute; /* Position the badge within the relatively positioned button */
+	top: 0;
+	right: 0;
+	width: 20px;
+	height: 20px;
+	visibility: hidden;
+}
+
 #nav-btn {
 	width: 150px;
 }

@@ -330,25 +330,31 @@ function getDrawn() {
             withCredentials: true
         },
         success: function(data) {
-        	// console.log(data);
-			remind_modal.drawnCard = data.performer_drawn;
+        	$('#loginModal').remove();			
+        	remind_modal.drawnCard = data.performer_drawn;
 			remind_modal.takenDiscount = data.vocher_drawn;
 			remind_modal.all_performers_drawn = data.all_performers_drawn;
 			if (remind_modal.all_performers_drawn) {
 				remind_modal.drawnCard = true;
 			}
-			// remind_modal.drawnCard = false;
-			// remind_modal.takenDiscount = false;
-
-			$('#loginModal').remove();
-			
-
 			// if the user hasn't seen tour yet, start the tour!
 			if (!data.is_read_tutorial) {
 				startTour();
 			}
 			else  {
 				$('#remindModal').modal('toggle');
+			}
+
+			// for notification
+			var noti = 0;
+			if (data.vocher_drawn) {
+				noti++;
+			}
+			if (data.performer_drawn) {
+				noti++;
+			}
+			if (noti > 0) {
+				$('#notify-icon').text(noti).css('visibility', 'visible');
 			}
 		}
 	});	
@@ -489,13 +495,12 @@ $(document).ready(function(){
 			}
 		},
 		error: function() {
-			location.href = "maintainence.html";
+			// location.href = "maintainence.html";
 		}
 	});
 	// draw card and draw coupon events
 	$('#draw-card').on('click', draw_card);
 	$('#draw-discount').on('click', draw_coupon);
-
 
 	// initialize tooltip
 	$('[data-toggle="tooltip"]').tooltip({'placement': 'top'});
