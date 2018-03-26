@@ -286,7 +286,7 @@ function showEggFoundModal() {
 
 // from menuPage.js
 function jumpPage(page, label="", uname="") {
-	$('#remindModal').modal('toggle');
+	$('.modal').modal('hide');
 	$(".modal-backdrop.fade.show").remove();
 	setTimeout(function(){
 		if (page == "chatroom") {
