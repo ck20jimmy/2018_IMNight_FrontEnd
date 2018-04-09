@@ -6,8 +6,8 @@ b, p, div {
 
 body {
     background: #fff url('../img/bac_2.jpg') center center fixed no-repeat;
-    -moz-background-size: 2000px 100%;
-    background-size: 2000px 100%;
+    -moz-background-size: 2000px 1200px;
+    background-size: 2000px 1200px;
 	animation: bgFadeIn 1.0s;
 }
 
