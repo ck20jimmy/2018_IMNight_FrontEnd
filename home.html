@@ -176,7 +176,7 @@
 	            <a v-if="!takenDiscount" id="draw-discount" data-toggle="modal" data-target="#coupon-Modal">領取每日優惠</a>
 	          </h5>
 	          <h5 v-if="drawnCard & !all_performers_drawn" class="jh">
-	            本日已抽卡，快去 <a class="drawn-text" onclick="jumpPage('chatroom')">找卡友聊聊</a>！<br>
+	            本日已抽卡，快去 <a class="drawn-text" onclick="link('chatroom')">找卡友聊聊</a>！<br>
 	            <!-- 本日已抽卡，快去資管人找卡友聊聊！<br> -->
 	          </h5>
 	          <h5 v-if="takenDiscount" class="jh">

@@ -103,7 +103,7 @@ function select_performer( label, uname ){
         return false;
     });
 
-    $("#people-list").collapse('hide');
+    // $("#people-list").collapse('hide');
 }
 
 function load_history(label,uname){
