@@ -178,7 +178,7 @@ function loadPage(page,callback){
 	script_name = "js/"+page+".js";
 	css_name = "css/"+page+".css";
 
-	if( ! (script_name == prev_js && css_name == prev_css) || prev_js == "js/menuPage.js" ){
+	if( ! (script_name == prev_js && css_name == prev_css) || prev_js == "js/couponList.js" ){
 		
 		//hide the nav bar
 		$(".sidenav-second-level").collapse('hide')
@@ -194,7 +194,7 @@ function loadPage(page,callback){
 		css.rel="stylesheet";
 		css.href= css_name;
 		document.head.appendChild(css);
-		
+
 		// load #mainContext of page.html
 		$("div.container.main-content").load(page+".html #mainContext", function(){
 			// load page.js

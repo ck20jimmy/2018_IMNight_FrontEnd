@@ -116,8 +116,7 @@ var resource = new Vue({
 			this.updateVocher(k);
             this.dcheck(k);
             // console.log(k);
-			$('.modal'+k).modal('toggle');
-			$(".modal-backdrop.fade.show").remove();
+			jumpPage('couponList');
 				
 		   },
     }
@@ -196,11 +195,3 @@ function switchCase() {
 }
 
 switchCase();
-
-// function goShop() {
-//     $('.modal').modal('toggle');
-//     $(".modal-backdrop.fade.show").remove();
-//     setTimeout(function(){
-//         loadPage('shop');
-//     }, 500);
-// }
