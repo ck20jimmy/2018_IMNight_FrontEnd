@@ -163,13 +163,13 @@ function load_history(label,uname){
 
 }
 
-$(document).click( function (event){
-    let clickover = event.target;
-    let opened = $("#people-list").hasClass('show');
-    if( opened && !$("#people-list").has(clickover).length ){
-        $("#people-list").collapse('hide');
-    }
-})
+// $(document).click( function (event){
+//     let clickover = event.target;
+//     let opened = $("#people-list").hasClass('show');
+//     if( opened && !$("#people-list").has(clickover).length ){
+//         $("#people-list").collapse('hide');
+//     }
+// });
 
 $("#people-list").on("show.bs.collapse hide.bs.collapse", function(){
     let angle = $("#show_list").find('svg');
