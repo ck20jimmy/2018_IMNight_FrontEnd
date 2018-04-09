@@ -223,7 +223,9 @@ function loadPage(page,callback){
 function link(page,callback){
 	$('.modal').modal('hide');
 	$(".modal-backdrop.fade.show").remove();
-	loadPage(page, callback);
+	setTimeout(function(){
+		loadPage(page, callback);
+	}, 500);
 }
 
 function logout() {
