@@ -37,11 +37,12 @@
 					<h4 class="card-title"><b>{{e.title}}</b></h4>
 				</div>
 			</div>
-			
-			<center>
-				<button v-if = "storyMorethanFour" type="button" class="btn btn-outline-danger" onclick = "showMoreStory()">更多故事</button>
-			</center>
-		</div>
+		</div>	
+
+		<center>
+			<button v-if = "storyMorethanFour" style = "margin-bottom: 20px;" type="button" class="btn btn-outline-danger" onclick = "showMoreStory()">更多故事</button>
+		</center>
+		
 
 		<!-- modal -->
 		<div v-for="e in stories">

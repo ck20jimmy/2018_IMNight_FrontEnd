@@ -33,11 +33,12 @@
                         <h6 class="card-subtitle"><span><img src = "img/manager.png"></span>{{e.teacher}}</h6>
                     </div>
 				</div>
-					
-				<center>
-					<button v-if = "courseMorethanFour" type="button" class="btn btn-outline-danger" onclick = "showMoreCourse()">更多課程</button>
-				</center>
-            </div>
+			</div>		
+
+			<center>
+				<button v-if = "courseMorethanFour" style = "margin-bottom: 20px;" type="button" class="btn btn-outline-danger" onclick = "showMoreCourse()">更多課程</button>
+			</center>
+            
 
             <!--modal-->
             <div class="modal fade" v-for="e in classes" v-bind="{id: 'exampleModal'+e.id}" tabindex="-1" role="dialog">
